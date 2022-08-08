@@ -4,13 +4,15 @@ import s from './Collapse.module.css'
 import { ChevronRight } from '@components/icons'
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
+import { extractStyles } from 'utility/extractStyles'
 
 export interface CollapseProps {
   title: string
   children: ReactNode
+  componentStyle: any
 }
 
-const Collapse: FC<CollapseProps> = ({ title, children }) => {
+const Collapse: FC<CollapseProps> = ({ title, children, componentStyle }) => {
   const [isActive, setActive] = useState(false)
   const [ref, { height: viewHeight }] = useMeasure()
 
@@ -21,7 +23,10 @@ const Collapse: FC<CollapseProps> = ({ title, children }) => {
   })
 
   const toggle = () => setActive((x) => !x)
+  const accordionName = 'Accordion'
+  const accordionCS = componentStyle[accordionName]
 
+  // pl-8
   return (
     <div
       className={s.root}
@@ -32,10 +37,10 @@ const Collapse: FC<CollapseProps> = ({ title, children }) => {
     >
       <div className={s.header}>
         <ChevronRight className={cn(s.icon, { [s.open]: isActive })} />
-        <span className={s.label}>{title}</span>
+        <span className={extractStyles(accordionCS.Title)}>{title}</span>
       </div>
       <a.div style={{ overflow: 'hidden', ...animProps }}>
-        <div ref={ref} className={s.content}>
+        <div ref={ref} className={extractStyles(accordionCS.Text)}>
           {children}
         </div>
       </a.div>

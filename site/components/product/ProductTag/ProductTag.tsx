@@ -1,5 +1,6 @@
 import cn from 'clsx'
 import { inherits } from 'util'
+import { extractStyles } from 'utility/extractStyles'
 import s from './ProductTag.module.css'
 
 interface ProductTagProps {
@@ -7,6 +8,7 @@ interface ProductTagProps {
   name: string
   price: string
   fontSize?: number
+  componentStyle: any
 }
 
 const ProductTag: React.FC<ProductTagProps> = ({
@@ -14,10 +16,49 @@ const ProductTag: React.FC<ProductTagProps> = ({
   price,
   className = '',
   fontSize = 32,
+  componentStyle,
 }) => {
+  const productTitleName = 'ProductTitle'
+  const productTitleCS = componentStyle[productTitleName]
+
+  const productPriceName = 'ProductPrice'
+  const productPriceCS = componentStyle[productPriceName]
+
+  let productTitleColor = productTitleCS.fontColor
+    ? productTitleCS.fontColor
+    : ''
+  let productTitleFontWeight = productTitleCS.fontWeight
+    ? productTitleCS.fontWeight
+    : ''
+  let productTitleFontSize = productTitleCS.fontSize
+    ? productTitleCS.fontSize
+    : ''
+  let productTitlePadding = productTitleCS.padding ? productTitleCS.padding : ''
+  let productTitleBG = productTitleCS.backgroundColor
+    ? productTitleCS.backgroundColor
+    : ''
+
+  const productTitleClassName = `${productTitleColor} ${productTitleFontWeight} ${productTitleFontSize} ${productTitlePadding} ${productTitleBG}`
+
+  let productPriceColor = productPriceCS.fontColor
+    ? productPriceCS.fontColor
+    : ''
+  let productPriceFontWeight = productPriceCS.fontWeight
+    ? productPriceCS.fontWeight
+    : ''
+  let productPriceFontSize = productPriceCS.fontSize
+    ? productPriceCS.fontSize
+    : ''
+  let productPricePadding = productPriceCS.padding ? productPriceCS.padding : ''
+  let productPriceBG = productPriceCS.backgroundColor
+    ? productPriceCS.backgroundColor
+    : ''
+  let productPriceDisplay = productPriceCS.display ? productPriceCS.display : ''
+  const productPriceClassName = `${productPriceColor} ${productPriceFontWeight} ${productPriceFontSize} ${productPricePadding} ${productPriceBG} ${productPriceDisplay}`
+  // p-4
   return (
     <div className={cn(s.root, className)}>
-      <h3 className={s.name}>
+      <h3 className={productTitleClassName}>
         <span
           className={cn({ [s.fontsizing]: fontSize < 32 })}
           style={{
@@ -28,7 +69,7 @@ const ProductTag: React.FC<ProductTagProps> = ({
           {name}
         </span>
       </h3>
-      <div className={s.price}>{price}</div>
+      <div className={productPriceClassName}>{price}</div>
     </div>
   )
 }

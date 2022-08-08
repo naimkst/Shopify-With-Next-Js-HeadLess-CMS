@@ -7,6 +7,8 @@ import Image, { ImageProps } from 'next/image'
 import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
+import componentStyle from '../../../constants/componentStyle.json'
+import adjustments from '../../../constants/adjustments.json'
 
 interface Props {
   className?: string
@@ -36,7 +38,10 @@ const ProductCard: FC<Props> = ({
     { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
     className
   )
-
+  const pageSetUpId = 'test'
+  const cs = componentStyle.parkcellars[pageSetUpId].ProductOverview
+  const ao =
+    adjustments.parkcellars[pageSetUpId].adjustment_object.ProductOverview
   return (
     <Link href={`/product/${product.slug}`}>
       <a className={rootClassName} aria-label={product.name}>
@@ -111,6 +116,7 @@ const ProductCard: FC<Props> = ({
             <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
+              componentStyle={cs}
             />
             <div className={s.imageContainer}>
               {product?.images && (

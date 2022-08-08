@@ -9,13 +9,21 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
+import { extractStyles } from 'utility/extractStyles'
 
 interface ProductSidebarProps {
   product: Product
   className?: string
+  componentStyle: any
+  adjustmentObject: any
 }
 
-const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
+const ProductSidebar: FC<ProductSidebarProps> = ({
+  product,
+  className,
+  componentStyle,
+  adjustmentObject,
+}) => {
   const addItem = useAddItem()
   const { openSidebar, setSidebarView } = useUI()
   const [loading, setLoading] = useState(false)
@@ -40,7 +48,38 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
       setLoading(false)
     }
   }
+  const addToCartName = 'AddToCart'
+  const addToCartCS = componentStyle[addToCartName]
+  const addToCartAO = adjustmentObject[addToCartName]
 
+  const descriptionName = 'Description'
+  const descriptionCS = componentStyle[descriptionName]
+
+  const accordionName = 'Accordion'
+  const accordionAO = adjustmentObject[accordionName]
+
+  let addToCartColor = addToCartCS.fontColor ? addToCartCS.fontColor : ''
+  let addToCartFontWeight = addToCartCS.fontWeight ? addToCartCS.fontWeight : ''
+  let addToCartBG = addToCartCS.backgroundColor
+    ? addToCartCS.backgroundColor
+    : ''
+  let addToCartWidth = addToCartCS.width ? addToCartCS.width : ''
+  let addToCartRounded = addToCartCS.rounded ? addToCartCS.rounded : ''
+
+  // !bg-accent-9 !text-accent-0 !font-semibold
+  const addToCartClassName = `${addToCartColor} ${addToCartFontWeight} ${addToCartBG} ${addToCartWidth} ${addToCartRounded}`
+
+  let descriptionColor = descriptionCS.fontColor ? descriptionCS.fontColor : ''
+  let descriptionFontWeight = descriptionCS.fontWeight
+    ? descriptionCS.fontWeight
+    : ''
+  let descriptionPadding = descriptionCS.padding ? descriptionCS.padding : ''
+  let descriptionOverflowWrap = descriptionCS.overflowWrap
+    ? descriptionCS.overflowWrap
+    : ''
+
+  // break-words font-normal !text-accent-9
+  const descriptionClassName = `${descriptionColor} ${descriptionFontWeight} ${descriptionPadding} ${descriptionOverflowWrap} `
   return (
     <div className={className}>
       <ProductOptions
@@ -49,39 +88,41 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
         setSelectedOptions={setSelectedOptions}
       />
       <Text
-        className="pb-4 break-words w-full max-w-xl"
+        className={descriptionClassName}
         html={product.descriptionHtml || product.description}
       />
       <div className="flex flex-row justify-between items-center">
-        <Rating value={4} />
+        <Rating value={5} />
         <div className="text-accent-6 pr-1 font-medium text-sm">36 reviews</div>
       </div>
       <div>
         {process.env.COMMERCE_CART_ENABLED && (
           <Button
-            aria-label="Add to Cart"
+            aria-label={addToCartAO.text}
             type="button"
-            className={s.button}
+            className={addToCartClassName}
             onClick={addToCart}
             loading={loading}
             disabled={variant?.availableForSale === false}
           >
             {variant?.availableForSale === false
               ? 'Not Available'
-              : 'Add To Cart'}
+              : addToCartAO.text}
           </Button>
         )}
       </div>
       <div className="mt-6">
-        <Collapse title="Care">
-          This is a limited edition production run. Printing starts when the
-          drop ends.
-        </Collapse>
-        <Collapse title="Details">
-          This is a limited edition production run. Printing starts when the
-          drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due
-          to COVID-19.
-        </Collapse>
+        {accordionAO.map(
+          (accordion: { title: string; text: string; iD: string }) => (
+            <Collapse
+              key={accordion.iD}
+              title={accordion.title}
+              componentStyle={componentStyle}
+            >
+              {accordion.text}
+            </Collapse>
+          )
+        )}
       </div>
     </div>
   )

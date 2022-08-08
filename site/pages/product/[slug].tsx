@@ -7,7 +7,8 @@ import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
-
+import componentStyle from '../../constants/componentStyle.json'
+import adjustments from '../../constants/adjustments.json'
 export async function getStaticProps({
   params,
   locale,
@@ -15,6 +16,7 @@ export async function getStaticProps({
   preview,
 }: GetStaticPropsContext<{ slug: string }>) {
   const config = { locale, locales }
+
   const pagesPromise = commerce.getAllPages({ config, preview })
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const productPromise = commerce.getProduct({
@@ -70,11 +72,19 @@ export default function Slug({
   relatedProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
+  const pageSetUpId = 'test'
+  const cs = componentStyle.parkcellars[pageSetUpId]
+  const ao = adjustments.parkcellars[pageSetUpId].adjustment_object
 
   return router.isFallback ? (
     <h1>Loading...</h1>
   ) : (
-    <ProductView product={product} relatedProducts={relatedProducts} />
+    <ProductView
+      product={product}
+      relatedProducts={relatedProducts}
+      componentStyle={cs}
+      adjustmentObject={ao}
+    />
   )
 }
 

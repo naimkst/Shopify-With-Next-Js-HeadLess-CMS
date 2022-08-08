@@ -1,0 +1,96 @@
+{
+  "parkcellars": {
+    "HomePage": {
+      "campaign_type": "HomePage",
+      "replacements": [
+        {
+          "adjustment_group": "ss9110"
+        },
+        {
+          "adjustment_group": "ss9113"
+        },
+        {
+          "adjustment_group": "ss9115"
+        },
+        {
+          "adjustment_group": "ss9117"
+        },
+        {
+          "adjustment_group": "ss9120"
+        },
+        {
+          "adjustment_group": "ss9121"
+        },
+        {
+          "adjustment_group": "ss9123"
+        },
+        {
+          "adjustment_group": "ss9124"
+        },
+        {
+          "adjustment_group": "ss9125"
+        },
+        {
+          "adjustment_group": "ss9126"
+        },
+        {
+          "adjustment_group": "ss10110"
+        },
+        {
+          "adjustment_group": "ss10111"
+        },
+        {
+          "adjustment_group": "ss10112"
+        },
+        {
+          "adjustment_group": "ss10115"
+        },
+        {
+          "adjustment_group": "ss10116"
+        },
+        {
+          "adjustment_group": "ss10117"
+        },
+        {
+          "adjustment_group": "ss10120"
+        },
+        {
+          "adjustment_group": "ss10121"
+        },
+        {
+          "adjustment_group": "ss10122"
+        },
+        {
+          "adjustment_group": "ss10123"
+        },
+        {
+          "adjustment_group": "ss10124"
+        },
+        {
+          "adjustment_group": "ss10125"
+        },
+        {
+          "adjustment_group": "ss10126"
+        },
+        {
+          "adjustment_group": "ss10127"
+        }
+      ],
+      "queryParams": {
+        "utm_content": {
+          "default": "1",
+          "location": "3"
+        }
+      },
+      "content_groups": [
+        {
+          "content_name": "Base",
+          "query_var": "utm_content",
+          "query_value": "Base",
+          "mapValue": "1"
+        }
+      ],
+      "editContentPage": "ss9110"
+    }
+  }
+}

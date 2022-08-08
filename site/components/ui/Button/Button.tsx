@@ -37,17 +37,13 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
   } = props
   const ref = useRef<typeof Component>(null)
 
-  const rootClassName = cn(
-    s.root,
-    {
-      [s.ghost]: variant === 'ghost',
-      [s.slim]: variant === 'slim',
-      [s.naked]: variant === 'naked',
-      [s.loading]: loading,
-      [s.disabled]: disabled,
-    },
-    className
-  )
+  const rootClassName = cn(className, s.root, {
+    [s.ghost]: variant === 'ghost',
+    [s.slim]: variant === 'slim',
+    [s.naked]: variant === 'naked',
+    [s.loading]: loading,
+    [s.disabled]: disabled,
+  })
 
   return (
     <Component
@@ -58,6 +54,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
       disabled={disabled}
       style={{
         width,
+
         ...style,
       }}
       {...rest}

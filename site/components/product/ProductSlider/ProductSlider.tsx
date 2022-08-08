@@ -14,11 +14,13 @@ import ProductSliderControl from '../ProductSliderControl'
 interface ProductSliderProps {
   children: React.ReactNode[]
   className?: string
+  componentStyle: any
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({
   children,
   className = '',
+  componentStyle,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
@@ -77,51 +79,80 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
   const onPrev = React.useCallback(() => slider.current?.prev(), [slider])
   const onNext = React.useCallback(() => slider.current?.next(), [slider])
 
-  return (
-    <div className={cn(s.root, className)} ref={sliderContainerRef}>
-      <div
-        ref={ref}
-        className={cn(s.slider, { [s.show]: isMounted }, 'keen-slider')}
-      >
-        {slider && <ProductSliderControl onPrev={onPrev} onNext={onNext} />}
-        {Children.map(children, (child) => {
-          // Add the keen-slider__slide className to children
-          if (isValidElement(child)) {
-            return {
-              ...child,
-              props: {
-                ...child.props,
-                className: `${
-                  child.props.className ? `${child.props.className} ` : ''
-                }keen-slider__slide`,
-              },
-            }
-          }
-          return child
-        })}
-      </div>
+  const sliderName = 'SliderContainer'
+  const sliderCS = componentStyle[sliderName]
 
-      <a.div className={s.album} ref={thumbsContainerRef}>
-        {slider &&
-          Children.map(children, (child, idx) => {
+  const sliderAlbumName = 'SliderAlbum'
+  const sliderAlbumCS = componentStyle[sliderAlbumName]
+
+  let sliderBG = sliderCS.backgroundColor ? sliderCS.backgroundColor : ''
+
+  // bg-violet-dark
+  let sliderAlbumBG = sliderAlbumCS.backgroundColor
+    ? sliderAlbumCS.backgroundColor
+    : ''
+
+  const sliderClassName = `${sliderBG}`
+  const sliderAlbumClassName = `${sliderAlbumBG}`
+
+  return (
+    <div
+      className={`flex items-center justify-center overflow-x-hidden ${sliderClassName}`}
+    >
+      <div className={cn(s.root, className)} ref={sliderContainerRef}>
+        <div
+          ref={ref}
+          className={cn(s.slider, { [s.show]: isMounted }, 'keen-slider')}
+        >
+          {slider && (
+            <ProductSliderControl
+              onPrev={onPrev}
+              onNext={onNext}
+              componentStyle={componentStyle}
+            />
+          )}
+          {Children.map(children, (child) => {
+            // Add the keen-slider__slide className to children
             if (isValidElement(child)) {
               return {
                 ...child,
                 props: {
                   ...child.props,
-                  className: cn(child.props.className, s.thumb, {
-                    [s.selected]: currentSlide === idx,
-                  }),
-                  id: `thumb-${idx}`,
-                  onClick: () => {
-                    slider.current?.moveToIdx(idx)
-                  },
+                  className: `${
+                    child.props.className ? `${child.props.className} ` : ''
+                  }keen-slider__slide`,
                 },
               }
             }
             return child
           })}
-      </a.div>
+        </div>
+
+        <a.div
+          className={`${s.album} ${sliderAlbumClassName}`}
+          ref={thumbsContainerRef}
+        >
+          {slider &&
+            Children.map(children, (child, idx) => {
+              if (isValidElement(child)) {
+                return {
+                  ...child,
+                  props: {
+                    ...child.props,
+                    className: cn(child.props.className, s.thumb, {
+                      [s.selected]: currentSlide === idx,
+                    }),
+                    id: `thumb-${idx}`,
+                    onClick: () => {
+                      slider.current?.moveToIdx(idx)
+                    },
+                  },
+                }
+              }
+              return child
+            })}
+        </a.div>
+      </div>
     </div>
   )
 }
