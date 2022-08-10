@@ -15,8 +15,12 @@ module.exports = {
       variants: ['hover', 'focus'],
     },
   ],
+
   theme: {
     extend: {
+      fontFamily: {
+        americus: ['AmericusSans'],
+      },
       maxWidth: {
         '8xl': '1920px',
       },

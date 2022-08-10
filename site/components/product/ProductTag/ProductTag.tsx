@@ -1,6 +1,6 @@
 import cn from 'clsx'
 import { inherits } from 'util'
-import { extractStyles } from 'utility/extractStyles'
+import { extractValues } from 'utility/extractValues'
 import s from './ProductTag.module.css'
 
 interface ProductTagProps {

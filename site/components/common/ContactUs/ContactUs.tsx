@@ -39,7 +39,7 @@ const ContactUs: React.FC<ContactUsProps> = ({
   let btnTextBG = btnTextCS.backgroundColor ? btnTextCS.backgroundColor : ''
 
   const btnTextClassName = `${btnTextColor} ${btnTextPadding} ${btnTextBG}`
-  // text-5xl
+  // text-5xl text-primary
   return (
     <div className="flex items-center justify-center h-full">
       <div className="absolute text-center max-w-3xl mx-6 z-20">

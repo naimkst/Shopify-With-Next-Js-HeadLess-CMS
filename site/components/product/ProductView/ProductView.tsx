@@ -1,11 +1,10 @@
-import s from './ProductView.module.css'
 import { FC } from 'react'
 import type { Product } from '@commerce/types/product'
 
 import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 
-import ProductOverview from '../ProductOverview'
+import ProductOverview2 from '../ProductOverview2'
 import ProductReviews from '../ProductReviews'
 
 import ProductFeatures from '../ProductFeatures'
@@ -28,7 +27,7 @@ const ProductView: FC<ProductViewProps> = ({
   return (
     <>
       <Container className="max-w-none w-full" clean>
-        <ProductOverview
+        <ProductOverview2
           componentStyle={componentStyle}
           product={product}
           adjustmentObject={adjustmentObject}

@@ -4,7 +4,7 @@ import s from './Collapse.module.css'
 import { ChevronRight } from '@components/icons'
 import { useSpring, a } from '@react-spring/web'
 import useMeasure from 'react-use-measure'
-import { extractStyles } from 'utility/extractStyles'
+import { extractValues } from 'utility/extractValues'
 
 export interface CollapseProps {
   title: string
@@ -37,10 +37,10 @@ const Collapse: FC<CollapseProps> = ({ title, children, componentStyle }) => {
     >
       <div className={s.header}>
         <ChevronRight className={cn(s.icon, { [s.open]: isActive })} />
-        <span className={extractStyles(accordionCS.Title)}>{title}</span>
+        <span className={extractValues(accordionCS.Title)}>{title}</span>
       </div>
       <a.div style={{ overflow: 'hidden', ...animProps }}>
-        <div ref={ref} className={extractStyles(accordionCS.Text)}>
+        <div ref={ref} className={extractValues(accordionCS.Text)}>
           {children}
         </div>
       </a.div>

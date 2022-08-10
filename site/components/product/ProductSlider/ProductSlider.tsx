@@ -10,17 +10,20 @@ import cn from 'clsx'
 import { a } from '@react-spring/web'
 import s from './ProductSlider.module.css'
 import ProductSliderControl from '../ProductSliderControl'
+import { ArrowLeft, ArrowRight } from '@components/icons'
 
 interface ProductSliderProps {
   children: React.ReactNode[]
   className?: string
   componentStyle: any
+  thumbControls?: boolean
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({
   children,
   className = '',
   componentStyle,
+  thumbControls = false,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
@@ -85,15 +88,25 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
   const sliderAlbumName = 'SliderAlbum'
   const sliderAlbumCS = componentStyle[sliderAlbumName]
 
+  const sliderThumbName = 'SliderThumb'
+  const sliderThumbCS = componentStyle[sliderThumbName]
+
   let sliderBG = sliderCS.backgroundColor ? sliderCS.backgroundColor : ''
 
-  // bg-violet-dark
+  // bg-violet-dark !h-[76px]
   let sliderAlbumBG = sliderAlbumCS.backgroundColor
     ? sliderAlbumCS.backgroundColor
     : ''
+  let sliderAlbumHeight = sliderAlbumCS.height ? sliderAlbumCS.height : ''
+  let sliderAlbumMargin = sliderAlbumCS.margin ? sliderAlbumCS.margin : ''
+
+  // !w-[76px]
+  let sliderThumbWidth = sliderThumbCS.width ? sliderThumbCS.width : ''
+  let sliderThumbMargin = sliderThumbCS.margin ? sliderThumbCS.margin : ''
 
   const sliderClassName = `${sliderBG}`
-  const sliderAlbumClassName = `${sliderAlbumBG}`
+  const sliderAlbumClassName = `${sliderAlbumBG} ${sliderAlbumHeight} ${sliderAlbumMargin}`
+  const sliderThumbClassName = `${sliderThumbWidth} ${sliderThumbMargin}`
 
   return (
     <div
@@ -104,7 +117,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
           ref={ref}
           className={cn(s.slider, { [s.show]: isMounted }, 'keen-slider')}
         >
-          {slider && (
+          {slider && !thumbControls && (
             <ProductSliderControl
               onPrev={onPrev}
               onNext={onNext}
@@ -127,31 +140,50 @@ const ProductSlider: React.FC<ProductSliderProps> = ({
             return child
           })}
         </div>
-
-        <a.div
-          className={`${s.album} ${sliderAlbumClassName}`}
-          ref={thumbsContainerRef}
-        >
-          {slider &&
-            Children.map(children, (child, idx) => {
-              if (isValidElement(child)) {
-                return {
-                  ...child,
-                  props: {
-                    ...child.props,
-                    className: cn(child.props.className, s.thumb, {
-                      [s.selected]: currentSlide === idx,
-                    }),
-                    id: `thumb-${idx}`,
-                    onClick: () => {
-                      slider.current?.moveToIdx(idx)
+        <div className={`${thumbControls && 'flex mx-4'}`}>
+          {thumbControls && (
+            <button
+              className="mx-2"
+              onClick={onPrev}
+              aria-label="Previous Product Image"
+            >
+              <ArrowLeft />
+            </button>
+          )}
+          <a.div
+            className={`${s.album} ${sliderAlbumClassName}`}
+            ref={thumbsContainerRef}
+          >
+            {slider &&
+              Children.map(children, (child, idx) => {
+                if (isValidElement(child)) {
+                  return {
+                    ...child,
+                    props: {
+                      ...child.props,
+                      className: `${cn(child.props.className, s.thumb, {
+                        [s.selected]: currentSlide === idx,
+                      })} ${sliderThumbClassName}`,
+                      id: `thumb-${idx}`,
+                      onClick: () => {
+                        slider.current?.moveToIdx(idx)
+                      },
                     },
-                  },
+                  }
                 }
-              }
-              return child
-            })}
-        </a.div>
+                return child
+              })}
+          </a.div>
+          {thumbControls && (
+            <button
+              className="mx-2"
+              onClick={onNext}
+              aria-label="Next Product Image"
+            >
+              <ArrowRight />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

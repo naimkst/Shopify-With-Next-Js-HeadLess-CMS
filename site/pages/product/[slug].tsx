@@ -72,7 +72,7 @@ export default function Slug({
   relatedProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter()
-  const pageSetUpId = 'test'
+  const pageSetUpId = 'test2'
   const cs = componentStyle.parkcellars[pageSetUpId]
   const ao = adjustments.parkcellars[pageSetUpId].adjustment_object
 

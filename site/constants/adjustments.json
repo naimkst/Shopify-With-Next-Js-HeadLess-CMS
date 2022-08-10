@@ -192,6 +192,199 @@
           }
         ]
       }
+    },
+    "test2": {
+      "adjustment_key": "",
+      "adjustment_name": "",
+      "adjustment_object": {
+        "LandingPageType": "pdp",
+        "Head": {
+          "Meta": {
+            "title": "Park Cellars - Your local park wine!",
+            "description": "Wines made to be drunk with friends in a park!",
+            "favicon": "/favicon.ico",
+            "iD": "322bfa49-aa5f-11ec-8496-e7a738d06736",
+            "path": "Head:Meta"
+          },
+          "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
+        },
+        "ProductOverview": {
+          "AddToCart": {
+            "text": "Add To Cart",
+            "href": "https://shop.parkcellars.com/collections/og-merch",
+            "iD": "32341478-aa5f-11ec-a0e4-e7a738d06736",
+            "path": "ModalEmail:CTAButton"
+          },
+          "Accordion": [
+            {
+              "title": "Care",
+              "text": "This is a limited edition production run. Printing starts when the drop ends.",
+
+              "iD": "1"
+            },
+            {
+              "title": "Detail",
+              "text": "This is a limited edition production run. Printing starts when the drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due to COVID-19.",
+
+              "iD": "2"
+            },
+            {
+              "title": "Shipping",
+              "text": "This is a limited edition production run. Printing starts when the drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due to COVID-19.",
+              "iD": "3"
+            }
+          ],
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
+        "ProductFeatures": {
+          "Title": {
+            "text": "Specifications"
+          },
+          "Description": {
+            "text": "The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated steel divider separates active cards from new ones, or can be used to archive important task lists."
+          },
+          "Features": [
+            { "name": "Origin", "description": "Designed by Good Goods, Inc." },
+            {
+              "name": "Material",
+              "description": "Solid walnut base with rare earth magnets and powder coated steel card cover"
+            },
+            { "name": "Dimensions", "description": "6.25\" x 3.55\" x 1.15\"" },
+            {
+              "name": "Finish",
+              "description": "Hand sanded and finished with natural oil"
+            },
+            {
+              "name": "Includes",
+              "description": "Wood card tray and 3 refill packs"
+            },
+            {
+              "name": "Considerations",
+              "description": "Made from natural materials. Grain and color vary with each item."
+            }
+          ],
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
+        "ProductReviews": {
+          "Content": {
+            "title": "Customer Reviews",
+            "reviewsText": "Based on 120 reviews",
+            "text": "Share your thoughts",
+            "subText": "If you used this product share your thought with other customers",
+            "btnText": "Write a review"
+          },
+          "Reviews": [
+            {
+              "name": "Jhon Smith",
+              "rating": 4,
+              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+            },
+            {
+              "name": "Jhon Smith",
+              "rating": 4,
+              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+            },
+            {
+              "name": "Jhon Smith",
+              "rating": 4,
+              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+            },
+            {
+              "name": "Jhon Smith",
+              "rating": 4,
+              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+            }
+          ],
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
+        "ContactUs": {
+          "Content": {
+            "title": "Get In Touch",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi ullam excepturi quasi tenetur totam maxime, vitae quam suscipit est laboriosam necessitatibus, eius dignissimos ab libero, a nesciunt explicabo consequatur voluptatum!"
+          },
+          "Button": {
+            "text": "Contact Us",
+            "href": "mailto:example@info.com"
+          },
+          "Image": {
+            "src": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80"
+          },
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
+
+        "Sections": [
+          {
+            "Section": "Head",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "Head"
+          },
+          {
+            "Section": "Menu",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "Menu"
+          },
+          {
+            "Section": "ModalEmail",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "ModalEmail",
+            "section_groups": true,
+            "component_groups": {
+              "ModalEmail:Heading": ["MainH"],
+              "ModalEmail:SubHeader": ["MainS"],
+              "ModalEmail:CTAButton": ["MainCTA"],
+              "GatherEmail": ["GatherEmail"],
+              "EmailModal": ["EmailModal"]
+            }
+          },
+          {
+            "Section": "OptionsCarousel",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "OptionsCarousel",
+            "component_groups": {
+              "ProductItem": {}
+            },
+            "configVars": {
+              "CarouselSetproduct": {
+                "number": 4
+              }
+            }
+          },
+          {
+            "Section": "ContentLeft",
+            "Name": false,
+            "style": "ReverseContentLeft",
+            "AllowedSections": "BannerContent",
+            "section_groups": true
+          },
+          {
+            "Section": "ContentRight",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "BannerContent",
+            "section_groups": true
+          },
+          {
+            "Section": "CoreProcess",
+            "Name": "CoreProcess",
+            "style": "ReverseCoreProcess",
+            "AllowedSections": "CoreProcess"
+          },
+          {
+            "Section": "ContactUs",
+            "Name": false,
+            "style": false,
+            "AllowedSections": "ContactUs"
+          }
+        ]
+      }
     }
   }
 }

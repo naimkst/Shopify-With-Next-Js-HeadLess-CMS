@@ -5,10 +5,11 @@ import cn from 'clsx'
 
 export interface RatingProps {
   value: number
+  className?: string
 }
 
-const Quantity: FC<RatingProps> = ({ value = 5 }) => (
-  <div className="flex flex-row py-3 text-accent-9">
+const Quantity: FC<RatingProps> = ({ value = 5, className = '' }) => (
+  <div className={`flex flex-row py-3 text-accent-9 ${className}`}>
     {rangeMap(5, (i) => (
       <span
         key={`star_${i}`}

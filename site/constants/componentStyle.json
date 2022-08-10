@@ -106,9 +106,9 @@
         },
         "BtnText": {
           "width": "w-full",
-          "backgroundColor": "bg-accent-9",
+          "backgroundColor": "bg-secondary",
           "padding": "p-2",
-          "fontColor": "text-black",
+          "fontColor": "text-secondary",
 
           "fontWeight": "font-semibold",
           "margin": "my-4"
@@ -142,7 +142,169 @@
         "BtnText": {
           "backgroundColor": "bg-secondary",
           "padding": "p-4 px-6",
-          "fontColor": "text-black"
+          "fontColor": "text-secondary"
+        }
+      }
+    },
+    "test2": {
+      "Head": {},
+      "Menu": {
+        "fontColor": "text-green-500",
+        "Logo": {}
+      },
+      "ProductOverview": {
+        "ProductTitle": {
+          "fontSize": "text-5xl",
+          "fontFamily": "font-americus",
+          "fontWeight": "font-bold",
+          "fontColor": "text-primary",
+          "padding": "py-4"
+        },
+        "ProductOptionLabel": {
+          "fontSize": "text-xs",
+          "textDecoration": "uppercase",
+          "fontWeight": "font-medium"
+        },
+        "ProductOptionContainer": {
+          "border": "border-secondary border-2",
+          "width": "w-fit",
+          "rounded": "rounded-full",
+          "margin": "my-2",
+          "padding": "px-2"
+        },
+        "ProductOptionValue": {
+          "backgroundColor": "bg-transparent",
+          "fontSize": "text-lg",
+          "outline": "outline-none",
+          "padding": "px-2 py-2"
+        },
+        "ProductPrice": {
+          "fontSize": "text-xl",
+
+          "fontWeight": "font-bold",
+          "fontColor": "text-emerald-500",
+
+          "width": "w-14"
+        },
+        "AddToCart": {
+          "width": "w-full",
+          "rounded": "rounded-full",
+          "backgroundColor": "bg-secondary",
+          "padding": "py-2",
+          "margin": "my-4",
+          "fontSize": "text-xl",
+
+          "fontWeight": "font-bold",
+          "fontColor": "text-secondary"
+        },
+        "Description": {
+          "fontColor": "!text-accent-9",
+          "fontWeight": "font-normal",
+          "overflowWrap": "break-words",
+          "padding": "pb-4"
+        },
+
+        "SliderContainer": {
+          "backgroundColor": "bg-white"
+        },
+        "SliderAlbum": {
+          "backgroundColor": "bg-white",
+          "height": "!h-[76px]",
+          "margin": "my-4"
+        },
+        "SliderThumb": {
+          "width": "!w-[76px]",
+          "margin": "mr-2"
+        },
+        "SliderControl": {
+          "backgroundColor": "bg-white",
+          "fontColor": "text-accent-0",
+          "borderColor": "border-accent-0"
+        }
+      },
+      "ProductFeatures": {
+        "Title": {
+          "fontSize": "text-3xl",
+
+          "fontWeight": "font-extrabold",
+          "fontColor": "text-primary"
+        },
+
+        "Description": {
+          "fontColor": "text-accent-5",
+          "fontWeight": "font-normal",
+          "margin": "mt-4"
+        },
+        "Features": {
+          "Title": {
+            "fontWeight": "font-medium",
+            "fontColor": "text-primary"
+          },
+          "Text": {
+            "fontColor": "text-accent-5",
+            "fontSize": "text-sm",
+            "margin": "mt-2"
+          }
+        }
+      },
+      "ProductReviews": {
+        "Title": {
+          "fontSize": "text-3xl",
+
+          "fontWeight": "font-extrabold",
+          "fontColor": "text-primary"
+        },
+        "ReviewsText": {
+          "fontWeight": "font-medium"
+        },
+        "Text": {
+          "fontSize": "text-xl",
+
+          "fontWeight": "font-bold",
+          "margin": "mb-2"
+        },
+        "SubText": {
+          "fontColor": "text-accent-6"
+        },
+        "BtnText": {
+          "width": "w-full",
+          "backgroundColor": "bg-secondary",
+          "padding": "p-2",
+          "fontColor": "text-secondary",
+
+          "fontWeight": "font-semibold",
+          "margin": "my-4"
+        },
+        "Reviews": {
+          "Title": {
+            "fontWeight": "font-bold",
+            "fontSize": "text-lg"
+          },
+          "Text": {
+            "fontColor": "text-accent-6",
+
+            "margin": "mt-2"
+          }
+        }
+      },
+      "ContactUs": {
+        "Title": {
+          "fontSize": "text-5xl",
+
+          "fontWeight": "font-extrabold",
+          "fontColor": "text-primary"
+        },
+        "Description": {
+          "fontSize": "text-lg",
+
+          "fontWeight": "font-semibold",
+          "margin": "my-4"
+        },
+
+        "BtnText": {
+          "backgroundColor": "bg-secondary",
+          "padding": "p-4 px-6",
+          "fontColor": "text-secondary"
         }
       }
     }

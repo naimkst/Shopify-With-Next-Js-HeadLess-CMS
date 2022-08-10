@@ -9,7 +9,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
-import { extractStyles } from 'utility/extractStyles'
+import { extractValues } from 'utility/extractValues'
 
 interface ProductSidebarProps {
   product: Product
