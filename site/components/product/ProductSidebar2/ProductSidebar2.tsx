@@ -61,7 +61,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const productPriceName = 'ProductPrice'
   const productPriceCS = componentStyle[productPriceName]
 
-  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus
+  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus text-emerald-500
 
   return (
     <div className={className}>
