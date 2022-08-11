@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import type { Product } from '@commerce/types/product'
 
 import { Container, Text } from '@components/ui'
@@ -13,6 +13,7 @@ import ProductFeatures from '../ProductFeatures'
 import RelatedProducts from '../RelatedProducts/RelatedProducts'
 import ContactUs from '@components/common/ContactUs/ContactUs'
 import Icons from '@components/ui/Icons'
+import Content from '@components/common/Content/Content'
 
 interface ProductViewProps {
   product: Product
@@ -27,6 +28,9 @@ const ProductView: FC<ProductViewProps> = ({
   componentStyle,
   adjustmentObject,
 }) => {
+  useEffect(() => {
+    console.log(document.querySelector('.coonnn')?.innerHTML)
+  }, [])
   return (
     <>
       <Container className="max-w-none w-full" clean>
@@ -39,7 +43,10 @@ const ProductView: FC<ProductViewProps> = ({
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-
+        <Content
+          componentStyle={componentStyle}
+          adjustmentObject={adjustmentObject}
+        />
         <ProductFeatures
           image={product.images[0].url}
           imageAlt={product.images[0].alt || 'Product Image'}

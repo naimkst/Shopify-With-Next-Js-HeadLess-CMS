@@ -25,9 +25,12 @@ const Icons: FC<IconsProps> = ({ componentStyle, adjustmentObject }) => {
   const textCS = iconsCS[textName]
 
   return (
-    <div className="flex justify-center gap-y-10 items-center bg-accent-2 px-12 py-12 flex-wrap">
+    <div className="flex justify-center gap-y-10 items-center bg-accent-1 px-12 py-12 flex-wrap">
       {iconsListAO.map((icon: { text: string; image: string }) => (
-        <div className="flex justify-center items-center flex-col gap-4 w-64">
+        <div
+          key={icon.text}
+          className="flex justify-center items-center flex-col gap-4 w-64"
+        >
           <img
             className={extractValues(iconCS)}
             width={80}
