@@ -228,6 +228,33 @@
           },
           "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
         },
+
+        "Icons": {
+          "Icons": [
+            {
+              "text": "Organic",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/organic_3x_d423c407-331e-4c9f-a96e-103c6320cf05_small.png?v=1634691969"
+            },
+            {
+              "text": "Fair trade",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/fair-trade_3x_017e283a-ba79-4d67-9349-4add3513c983_small.png?v=1634691977"
+            },
+            {
+              "text": "Barista crafted",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/barista-crafted_3x_c4ccc05b-2caf-465d-b3d8-a6f26316b9cc_small.png?v=1634691987"
+            },
+            {
+              "text": "Concentrated",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/concentrated_3x_53280954-fc05-4d1f-8b4a-181f64b227dc_small.png?v=1634691997"
+            },
+            {
+              "text": "Specialty-Grade Coffee",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/speciality-grade_3x_706a66e1-20ce-4818-be1d-a9f8f6138841_small.png?v=1634692007"
+            }
+          ],
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
         "ProductFeatures": {
           "Title": {
             "text": "Specifications"

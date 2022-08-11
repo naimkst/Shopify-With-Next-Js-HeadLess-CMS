@@ -12,6 +12,7 @@ import ProductReviews from '../ProductReviews'
 import ProductFeatures from '../ProductFeatures'
 import RelatedProducts from '../RelatedProducts/RelatedProducts'
 import ContactUs from '@components/common/ContactUs/ContactUs'
+import Icons from '@components/ui/Icons'
 
 interface ProductViewProps {
   product: Product
@@ -34,21 +35,22 @@ const ProductView: FC<ProductViewProps> = ({
           product={product}
           adjustmentObject={adjustmentObject}
         />
-        <hr className="mt-7 border-accent-2" />
+        <Icons
+          componentStyle={componentStyle}
+          adjustmentObject={adjustmentObject}
+        />
+
         <ProductFeatures
           image={product.images[0].url}
           imageAlt={product.images[0].alt || 'Product Image'}
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-        <hr className="mt-7 border-accent-2" />
         <ProductReviews
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-        <hr className="mt-7 border-accent-2" />
         <RelatedProducts relatedProducts={relatedProducts} />
-        <hr className="mt-7 border-accent-2" />
 
         <ContactUs
           componentStyle={componentStyle}

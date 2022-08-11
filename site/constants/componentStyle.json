@@ -223,6 +223,19 @@
           "borderColor": "border-accent-0"
         }
       },
+      "Icons": {
+        "Icon": {
+          "rounded": "rounded-full",
+
+          "border": "border-2 border-black",
+          "backgroundColor": "bg-white"
+        },
+
+        "Text": {
+          "fontSize": "text-sm",
+          "fontFamily": "font-americus"
+        }
+      },
       "ProductFeatures": {
         "Title": {
           "fontSize": "text-3xl",
