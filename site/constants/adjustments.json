@@ -208,33 +208,24 @@
           },
           "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
         },
-        "ProductOverview": {
-          "AddToCart": {
-            "text": "Add To Cart",
-            "href": "https://shop.parkcellars.com/collections/og-merch",
-            "iD": "32341478-aa5f-11ec-a0e4-e7a738d06736",
-            "path": "ModalEmail:CTAButton"
+        "ProductOverview2": {
+          "Rating": {
+            "rating": 4,
+            "reviewAmount": "15"
           },
-          "Accordion": [
-            {
-              "title": "Care",
-              "text": "This is a limited edition production run. Printing starts when the drop ends.",
+          "Notice": {
+            "text": "Makes 20 cups of cold brew / 30 servings of Elixir"
+          },
+          "AddToCart": {
+            "text": "Add To Cart"
+          },
 
-              "iD": "1"
-            },
-            {
-              "title": "Detail",
-              "text": "This is a limited edition production run. Printing starts when the drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due to COVID-19.",
-
-              "iD": "2"
-            },
-            {
-              "title": "Shipping",
-              "text": "This is a limited edition production run. Printing starts when the drop ends. Reminder: Bad Boys For Life. Shipping may take 10+ days due to COVID-19.",
-              "iD": "3"
-            }
-          ],
-
+          "Seperator": {
+            "text": "Just Browsing?"
+          },
+          "Button": {
+            "text": "Text Me This Item"
+          },
           "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
         },
         "ProductFeatures": {

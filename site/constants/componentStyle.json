@@ -58,7 +58,8 @@
           "backgroundColor": "bg-violet",
           "fontColor": "text-accent-0",
           "borderColor": "border-accent-0"
-        }
+        },
+        "SliderThumb": {}
       },
       "ProductFeatures": {
         "Title": {
@@ -152,7 +153,7 @@
         "fontColor": "text-green-500",
         "Logo": {}
       },
-      "ProductOverview": {
+      "ProductOverview2": {
         "ProductTitle": {
           "fontSize": "text-5xl",
           "fontFamily": "font-americus",

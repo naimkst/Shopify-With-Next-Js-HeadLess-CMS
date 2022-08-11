@@ -5,6 +5,8 @@ import { Container, Text } from '@components/ui'
 import { SEO } from '@components/common'
 
 import ProductOverview2 from '../ProductOverview2'
+import ProductOverview from '../ProductOverview'
+
 import ProductReviews from '../ProductReviews'
 
 import ProductFeatures from '../ProductFeatures'

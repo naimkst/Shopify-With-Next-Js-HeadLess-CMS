@@ -40,11 +40,17 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const addToCart = async () => {
     setLoading(true)
     try {
-      await addItem({
+      console.log({
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0]?.id),
         quantity: selectedQuantity,
       })
+      const res = await addItem({
+        productId: String(product.id),
+        variantId: String(variant ? variant.id : product.variants[0]?.id),
+        quantity: selectedQuantity,
+      })
+      console.log(res)
       setSidebarView('CART_VIEW')
       openSidebar()
       setLoading(false)
@@ -61,7 +67,19 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const productPriceName = 'ProductPrice'
   const productPriceCS = componentStyle[productPriceName]
 
-  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus text-emerald-500
+  const ratingName = 'Rating'
+  const ratingAO = adjustmentObject[ratingName]
+
+  const noticeName = 'Notice'
+  const noticeAO = adjustmentObject[noticeName]
+
+  const seperatorName = 'Seperator'
+  const seperatorAO = adjustmentObject[seperatorName]
+
+  const buttonName = 'Button'
+  const buttonAO = adjustmentObject[buttonName]
+
+  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus text-emerald-500 w-14
 
   return (
     <div className={className}>
@@ -77,11 +95,11 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
       </p>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <Rating value={5} className="!text-yellow-300" />
-          <p>10 review</p>
+          <Rating value={ratingAO.rating} className="!text-yellow-300" />
+          <p>{ratingAO.reviewAmount} reviews</p>
         </div>
         <p className="bg-accent-2 rounded-full p-2 px-4 my-2 w-fit">
-          Makes 20 cups of cold brew / 30 servings of Elixir
+          {noticeAO.text}{' '}
         </p>
       </div>
 
@@ -99,12 +117,13 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
             addToCart={addToCart}
             loading={loading}
             componentStyle={componentStyle}
+            adjustmentObject={adjustmentObject}
           />
         </div>
       )}
-      <Seperator className="" text="Just browsing?" />
+      <Seperator className="" text={seperatorAO.text} />
       <button className="w-full py-2 font-bold text-xl my-4 rounded-full bg-secondary text-secondary">
-        Text Me This Item
+        {buttonAO.text}
       </button>
     </div>
   )

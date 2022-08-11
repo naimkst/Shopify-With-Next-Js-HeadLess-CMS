@@ -8,6 +8,7 @@ interface Props {
   addToCart: () => void
   loading: boolean
   componentStyle: any
+  adjustmentObject: any
 }
 
 const ProductQuantityATC: FC<Props> = ({
@@ -15,6 +16,7 @@ const ProductQuantityATC: FC<Props> = ({
   addToCart,
   loading,
   componentStyle,
+  adjustmentObject,
 }) => {
   const [inputValue, setInputValue] = useState(1)
   const inputChangeHandler = (type: string) => {
@@ -36,6 +38,8 @@ const ProductQuantityATC: FC<Props> = ({
 
   const addToCartName = 'AddToCart'
   const addToCartCS = componentStyle[addToCartName]
+  const addToCartAO = adjustmentObject[addToCartName]
+
   //  const addToCartAO = adjustmentObject[addToCartName]
 
   return (
@@ -57,7 +61,7 @@ const ProductQuantityATC: FC<Props> = ({
         onClick={addToCart}
         disabled={loading}
       >
-        Add to cart
+        {addToCartAO.text}
         {loading && (
           <i className="pl-2 m-0 flex">
             <LoadingDots />

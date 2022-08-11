@@ -20,7 +20,7 @@ const ProductOverview: FC<ProductViewProps> = ({
   adjustmentObject,
   componentStyle,
 }) => {
-  const componentName = 'ProductOverview'
+  const componentName = 'ProductOverview2'
   const cs = componentStyle[componentName]
   const ao = adjustmentObject[componentName]
   return (
