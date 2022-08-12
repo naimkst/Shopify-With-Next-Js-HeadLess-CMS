@@ -82,7 +82,7 @@ const ProductReviews: React.FC<ProductreviewsProps> = ({
       <p className={extractValues(textCS)}>{contentAO.text}</p>
       <div ref={ref} className="keen-slider">
         {reviewsAO.map((review: any, idx: number) => (
-          <ReviewItem index={idx} review={review} />
+          <ReviewItem key={idx} index={idx} review={review} />
         ))}
       </div>
     </div>

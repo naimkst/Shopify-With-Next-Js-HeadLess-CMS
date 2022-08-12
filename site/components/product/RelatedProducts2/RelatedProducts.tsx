@@ -35,7 +35,7 @@ const RelatedProducts: FC<ProductViewProps> = ({
       <h1 className={extractValues(titleCS)}>{titleAO.text}</h1>
       <div className="flex gap-10">
         {relatedProducts.map((p) => (
-          <a href={`/product/${p.path}`}>
+          <a key={p.id} href={`/product/${p.path}`}>
             <div
               key={p.path}
               className="animated fadeIn flex flex-col gap-2 text-center"
