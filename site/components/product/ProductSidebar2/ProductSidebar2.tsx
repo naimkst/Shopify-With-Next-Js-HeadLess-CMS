@@ -40,17 +40,12 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const addToCart = async () => {
     setLoading(true)
     try {
-      console.log({
-        productId: String(product.id),
-        variantId: String(variant ? variant.id : product.variants[0]?.id),
-        quantity: selectedQuantity,
-      })
       const res = await addItem({
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0]?.id),
         quantity: selectedQuantity,
       })
-      console.log(res)
+
       setSidebarView('CART_VIEW')
       openSidebar()
       setLoading(false)

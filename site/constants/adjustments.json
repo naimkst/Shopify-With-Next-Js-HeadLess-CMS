@@ -304,36 +304,65 @@
 
           "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
         },
-        "ProductReviews": {
+        "ProductReviews2": {
           "Content": {
-            "title": "Customer Reviews",
-            "reviewsText": "Based on 120 reviews",
-            "text": "Share your thoughts",
-            "subText": "If you used this product share your thought with other customers",
-            "btnText": "Write a review"
+            "title": "Our Reviews...",
+            "text": "Hear from some of our 1000+ customers!"
           },
           "Reviews": [
             {
-              "name": "Jhon Smith",
+              "title": "HIGHLY RECOMMEND!",
+              "name": "Candy Schwartz",
               "rating": 4,
-              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+              "description": "I just received my Ambassadors pack which contained 4 bottles of Explorer Cold Brew Classic Black with no caffeine, caffeine,regular caffeine.",
+              "date": "11/03/2021",
+              "product": "COLD BREW COFFEE CONCENTRATE 32 OZ BOTTLE, MAKES 20 CUPS",
+              "image": "https://judgeme.imgix.net/explorer-cold-brew/1611695249__IMG_5372__original.jpg?auto=format&w=960"
             },
             {
-              "name": "Jhon Smith",
-              "rating": 4,
-              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+              "title": "Easy to use, smooth flavor",
+              "name": "Candy Schwartz",
+              "rating": 5,
+              "description": "I just received my Ambassadors pack which contained 4 bottles of Explorer Cold Brew Classic Black with no caffeine, caffeine,regular caffeine.",
+              "date": "11/03/2021",
+              "product": "COLD BREW COFFEE CONCENTRATE 32 OZ BOTTLE, MAKES 20 CUPS",
+              "image": "https://judgeme.imgix.net/explorer-cold-brew/1610782397__IMG_3912__original.jpg?auto=format&w=960"
             },
             {
-              "name": "Jhon Smith",
+              "title": "HIGHLY RECOMMEND!",
+              "name": "Candy Schwartz",
               "rating": 4,
-              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+              "description": "I just received my Ambassadors pack which contained 4 bottles of Explorer Cold Brew Classic Black with no caffeine, caffeine,regular caffeine.",
+              "date": "11/03/2021",
+              "product": "COLD BREW COFFEE CONCENTRATE 32 OZ BOTTLE, MAKES 20 CUPS",
+              "image": "https://judgeme.imgix.net/explorer-cold-brew/1611695249__IMG_5372__original.jpg?auto=format&w=960"
             },
             {
-              "name": "Jhon Smith",
+              "title": "Easy to use, smooth flavor",
+              "name": "Candy Schwartz",
+              "rating": 5,
+              "description": "I just received my Ambassadors pack which contained 4 bottles of Explorer Cold Brew Classic Black with no caffeine, caffeine,regular caffeine.",
+              "date": "11/03/2021",
+              "product": "COLD BREW COFFEE CONCENTRATE 32 OZ BOTTLE, MAKES 20 CUPS",
+              "image": "https://judgeme.imgix.net/explorer-cold-brew/1610782397__IMG_3912__original.jpg?auto=format&w=960"
+            },
+            {
+              "title": "HIGHLY RECOMMEND!",
+              "name": "Candy Schwartz",
               "rating": 4,
-              "description": "  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias, autem eaque eius quod blanditiis fugit. Beatae dignissimos, totam aut dolor cupiditate dolorum? Hic blanditiis delectus libero magni molestiae maxime quis!"
+              "description": "I just received my Ambassadors pack which contained 4 bottles of Explorer Cold Brew Classic Black with no caffeine, caffeine,regular caffeine.",
+              "date": "11/03/2021",
+              "product": "COLD BREW COFFEE CONCENTRATE 32 OZ BOTTLE, MAKES 20 CUPS",
+              "image": "https://judgeme.imgix.net/explorer-cold-brew/1611695249__IMG_5372__original.jpg?auto=format&w=960"
             }
           ],
+
+          "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
+        },
+        "RelatedProducts2": {
+          "Title": {
+            "text": "YOU MAY ALSO LIKE"
+          },
 
           "iD": "32374171-aa5f-11ec-82d3-e7a738d06736"
         },

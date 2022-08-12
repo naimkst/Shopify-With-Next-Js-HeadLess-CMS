@@ -261,34 +261,21 @@
           }
         }
       },
-      "ProductReviews": {
+      "ProductReviews2": {
         "Title": {
-          "fontSize": "text-3xl",
-
-          "fontWeight": "font-extrabold",
-          "fontColor": "text-primary"
+          "fontSize": "text-4xl",
+          "fontFamily": "font-americus",
+          "textAlign": "text-center"
         },
         "ReviewsText": {
           "fontWeight": "font-medium"
         },
         "Text": {
-          "fontSize": "text-xl",
+          "fontSize": "text-lg",
+          "textAlign": "text-center",
+          "margin": "mb-4"
+        },
 
-          "fontWeight": "font-bold",
-          "margin": "mb-2"
-        },
-        "SubText": {
-          "fontColor": "text-accent-6"
-        },
-        "BtnText": {
-          "width": "w-full",
-          "backgroundColor": "bg-secondary",
-          "padding": "p-2",
-          "fontColor": "text-secondary",
-
-          "fontWeight": "font-semibold",
-          "margin": "my-4"
-        },
         "Reviews": {
           "Title": {
             "fontWeight": "font-bold",
@@ -299,6 +286,20 @@
 
             "margin": "mt-2"
           }
+        }
+      },
+      "RelatedProducts2": {
+        "Title": {
+          "fontSize": "text-xl",
+          "fontFamily": "font-americus"
+        },
+        "ProductName": {
+          "fontSize": "text-xl",
+          "fontWeight": "font-medium"
+        },
+        "Price": {
+          "fontSize": "text-lg",
+          "fontWeight": "font-medium"
         }
       },
       "ContactUs": {

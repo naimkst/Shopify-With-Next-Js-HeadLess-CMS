@@ -7,10 +7,10 @@ import { SEO } from '@components/common'
 import ProductOverview2 from '../ProductOverview2'
 import ProductOverview from '../ProductOverview'
 
-import ProductReviews from '../ProductReviews'
+import ProductReviews2 from '../ProductReviews2'
 
 import ProductFeatures from '../ProductFeatures'
-import RelatedProducts from '../RelatedProducts/RelatedProducts'
+import RelatedProducts2 from '../RelatedProducts2/RelatedProducts'
 import ContactUs from '@components/common/ContactUs/ContactUs'
 import Icons from '@components/ui/Icons'
 import Content from '@components/common/Content/Content'
@@ -28,9 +28,6 @@ const ProductView: FC<ProductViewProps> = ({
   componentStyle,
   adjustmentObject,
 }) => {
-  useEffect(() => {
-    console.log(document.querySelector('.coonnn')?.innerHTML)
-  }, [])
   return (
     <>
       <Container className="max-w-none w-full" clean>
@@ -47,17 +44,22 @@ const ProductView: FC<ProductViewProps> = ({
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
+        <ProductReviews2
+          componentStyle={componentStyle}
+          adjustmentObject={adjustmentObject}
+        />
         <ProductFeatures
           image={product.images[0].url}
           imageAlt={product.images[0].alt || 'Product Image'}
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-        <ProductReviews
+
+        <RelatedProducts2
+          relatedProducts={relatedProducts.slice(0, 3)}
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-        <RelatedProducts relatedProducts={relatedProducts} />
 
         <ContactUs
           componentStyle={componentStyle}
