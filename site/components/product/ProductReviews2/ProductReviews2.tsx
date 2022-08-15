@@ -74,7 +74,7 @@ const ProductReviews: React.FC<ProductreviewsProps> = ({
       },
     ]
   )
-
+  // text-4xl
   return (
     <div className="flex flex-col items-center bg-accent-1 lg:p-12 py-12 px-4 ">
       <h1 className={extractValues(titleCS)}>{contentAO.title}</h1>
