@@ -48,12 +48,12 @@ const ProductView: FC<ProductViewProps> = ({
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
         />
-        <ProductFeatures
+        {/* <ProductFeatures
           image={product.images[0].url}
           imageAlt={product.images[0].alt || 'Product Image'}
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
-        />
+        /> */}
 
         <RelatedProducts2
           relatedProducts={relatedProducts.slice(0, 3)}
@@ -61,10 +61,10 @@ const ProductView: FC<ProductViewProps> = ({
           adjustmentObject={adjustmentObject}
         />
 
-        <ContactUs
+        {/* <ContactUs
           componentStyle={componentStyle}
           adjustmentObject={adjustmentObject}
-        />
+        /> */}
       </Container>
       <SEO
         title={product.name}
