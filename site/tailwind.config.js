@@ -20,6 +20,9 @@ module.exports = {
     extend: {
       fontFamily: {
         americus: ['AmericusSans'],
+        campton: ['Campton'],
+        camptonSans: ['Campton, sans-serif'],
+        camptonBold: ['CamptonBold'],
       },
       maxWidth: {
         '8xl': '1920px',

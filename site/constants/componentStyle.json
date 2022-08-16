@@ -164,14 +164,16 @@
         "ProductOptionLabel": {
           "fontSize": "text-xs",
           "textDecoration": "uppercase",
-          "fontWeight": "font-medium"
+          "fontWeight": "font-medium",
+          "fontFamily": "font-camptonSans"
         },
         "ProductOptionContainer": {
           "border": "border-secondary border-2",
           "width": "w-fit",
           "rounded": "rounded-full",
           "margin": "my-2",
-          "padding": "px-2"
+          "padding": "px-2",
+          "fontFamily": "font-campton"
         },
         "ProductOptionValue": {
           "backgroundColor": "bg-transparent",
@@ -202,7 +204,8 @@
           "fontColor": "!text-accent-9",
           "fontWeight": "font-normal",
           "overflowWrap": "break-words",
-          "padding": "pb-4"
+          "padding": "pb-4",
+          "fontFamily": "font-camptonSans"
         },
 
         "SliderContainer": {
@@ -273,7 +276,8 @@
         "Text": {
           "fontSize": "text-lg",
           "textAlign": "text-center",
-          "margin": "mb-4"
+          "margin": "mb-4",
+          "fontFamily": "font-campton"
         },
 
         "Reviews": {

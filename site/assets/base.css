@@ -61,15 +61,26 @@
   font-family: 'AmericusSans';
   src: url('/fonts/AmericusSansAged.ttf');
 }
+@font-face {
+  font-family: 'Campton';
+  src: url('/fonts/CamptonBook.otf');
+}
+@font-face {
+  font-family: 'CamptonBold';
+  src: url('/fonts/CamptonBold.otf');
+}
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-
+.campton {
+  font-family: 'Campton, sans-serif';
+}
 html,
 body {
   height: 100%;
+
   box-sizing: border-box;
   touch-action: manipulation;
   font-family: var(--font-sans);

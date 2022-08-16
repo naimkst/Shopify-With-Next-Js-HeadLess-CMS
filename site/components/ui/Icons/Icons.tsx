@@ -23,6 +23,7 @@ const Icons: FC<IconsProps> = ({ componentStyle, adjustmentObject }) => {
 
   const textName = 'Text'
   const textCS = iconsCS[textName]
+  // bg-white
 
   return (
     <div className="flex justify-center gap-y-10 items-center bg-accent-1 px-12 py-12 flex-wrap">

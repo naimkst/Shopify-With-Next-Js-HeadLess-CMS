@@ -85,15 +85,15 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
         setSelectedOptions={setSelectedOptions}
         componentStyle={componentStyle}
       />
-      <p className="font-bold">
+      <p className="font-bold ">
         {Object.values(selectedOptions).join(' / ').toUpperCase()}
       </p>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 ">
         <div className="flex items-center gap-2">
           <Rating value={ratingAO.rating} className="!text-yellow-300" />
           <p>{ratingAO.reviewAmount} reviews</p>
         </div>
-        <p className="bg-accent-2 rounded-full p-2 px-4 my-2 w-fit">
+        <p className="bg-accent-2 font-campton rounded-full p-2 px-4 my-2 w-fit">
           {noticeAO.text}{' '}
         </p>
       </div>
