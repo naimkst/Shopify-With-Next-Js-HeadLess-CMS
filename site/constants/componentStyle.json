@@ -155,7 +155,7 @@
       },
       "ProductOverview2": {
         "ProductTitle": {
-          "fontSize": "text-5xl",
+          "fontSize": "text-[40px]",
           "fontFamily": "font-americus",
           "fontWeight": "font-bold",
           "fontColor": "text-primary",
@@ -179,7 +179,7 @@
           "backgroundColor": "bg-transparent",
           "fontSize": "text-lg",
           "outline": "outline-none",
-          "padding": "px-2 py-2"
+          "padding": "pr-8 pl-6 pt-3 pb-2"
         },
         "ProductPrice": {
           "fontSize": "text-xl",

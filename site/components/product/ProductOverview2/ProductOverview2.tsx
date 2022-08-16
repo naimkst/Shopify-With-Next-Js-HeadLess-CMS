@@ -33,8 +33,8 @@ const ProductOverview: FC<ProductViewProps> = ({
                 className={s.img}
                 src={image.url!}
                 alt={image.alt || 'Product Image'}
-                width={600}
-                height={600}
+                width={700}
+                height={700}
                 priority={i === 0}
                 quality="85"
               />

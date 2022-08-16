@@ -74,7 +74,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const buttonName = 'Button'
   const buttonAO = adjustmentObject[buttonName]
 
-  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus text-emerald-500 w-14
+  // !bg-accent-9 !text-accent-0 !font-semibold text-5xl break-words font-normal !text-accent-9 font-americus text-emerald-500 w-14 text-[40px]
 
   return (
     <div className={className}>

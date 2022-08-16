@@ -23,7 +23,7 @@ const ProductDropdownOptions: React.FC<ProductDropdownOptionsProps> = ({
   const optionContainerCS = componentStyle[optionContainerName]
   const optionValueName = 'ProductOptionValue'
   const optionValueCS = componentStyle[optionValueName]
-  // w-fit px-2 py-2 font-camptonSans
+  // w-fit  font-camptonSans pr-8 pl-6 pt-3 pb-2
   return (
     <div>
       {options.map((opt) => (
