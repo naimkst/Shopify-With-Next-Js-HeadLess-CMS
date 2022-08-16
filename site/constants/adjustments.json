@@ -263,7 +263,7 @@
             "tabs": [
               {
                 "title": "Ingredient Story",
-                "content": "<div><div><strong>Origin</strong><div>Ethiopia, Peru</div></div><br><div><strong>Process</strong><div>Washed</div></div><br><div><strong>Elevation</strong><div>1500-2200m</div></div><br><div><strong>Cup</strong><div>Smooth &amp; Bold</div></div><br><div><strong>Caffeine Level (per oz)</strong><div>No Caffeine (0-2mg), Low Caffeine (50mg), Regular Caffeine (100mg), Extra Caffeine (150mg)</div></div><br><div><strong>Story</strong><div>Inspired by many trips around the world, these premium flavor syrups are designed to elevate the Explorer coffee experience.</div></div></div>"
+                "content": "<div><div style='display: flex; gap: 100px;'><div> <div><strong>Origin</strong><div>Ethiopia, Peru</div></div><br><div><strong>Process</strong><div>Washed</div></div></div><div><div><strong>Elevation</strong><div>1500-2200m</div></div><br><div><strong>Cup</strong><div>Smooth &amp; Bold</div></div></div></div><br><div><strong>Caffeine Level (per oz)</strong><div>No Caffeine (0-2mg), Low Caffeine (50mg), Regular Caffeine (100mg), Extra Caffeine (150mg)</div></div><br><div><strong>Story</strong><div>Inspired by many trips around the world, these premium flavor syrups are designed to elevate the Explorer coffee experience.</div></div></div>"
               },
               {
                 "title": "Nutrition Info",

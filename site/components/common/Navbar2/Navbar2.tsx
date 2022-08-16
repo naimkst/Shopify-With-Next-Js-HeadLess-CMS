@@ -2,11 +2,23 @@ import { FC, useEffect, useState } from 'react'
 import Link from 'next/link'
 import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
-import { Logo, Container } from '@components/ui'
-import { Searchbar, UserNav } from '@components/common'
+import { Logo, Container, useUI } from '@components/ui'
+
 import { Cross } from '@components/icons'
 import { useRouter } from 'next/router'
 import NavbarItem from './NavbarItem'
+import useCart from '@framework/cart/use-cart'
+import { LineItem } from '@commerce/types/cart'
+import User from '@components/icons/User'
+import Cart from '@components/icons/Cart'
+import {
+  Dropdown,
+  DropdownTrigger as DropdownTriggerInst,
+  Button,
+} from '@components/ui'
+import CustomerMenuContent from '../UserNav/CustomerMenuContent'
+import useCustomer from '@framework/customer/use-customer'
+import React from 'react'
 
 interface Link {
   href: string
@@ -16,6 +28,7 @@ interface Link {
 interface NavbarProps {
   links?: Link[]
 }
+const countItem = (count: number, item: LineItem) => count + item.quantity
 
 const Navbar: FC<NavbarProps> = ({ links }) => {
   const router = useRouter()
@@ -44,6 +57,15 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
 
     { href: '/', name: 'Our Story' },
   ]
+  const { data } = useCart()
+  const { data: isCustomerLoggedIn } = useCustomer()
+
+  const { openModal, setSidebarView, openSidebar } = useUI()
+  const itemsCount = data?.lineItems.reduce(countItem, 0) ?? 0
+  const DropdownTrigger = isCustomerLoggedIn
+    ? DropdownTriggerInst
+    : React.Fragment
+  console.log(itemsCount)
   return (
     <NavbarRoot>
       <Container clean className="max-w-8xl px-12 ">
@@ -115,8 +137,46 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                   </>
                 ))}
               </nav>
-              <div className="flex items-center w-16">
-                <UserNav />
+              <div className="flex gap-4 items-center w-16">
+                {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
+                  <Dropdown>
+                    <DropdownTrigger>
+                      <button
+                        onClick={() =>
+                          isCustomerLoggedIn ? null : openModal()
+                        }
+                      >
+                        <User
+                          className="w-8 h-8"
+                          fill="transparent"
+                          stroke="black"
+                          strokeWidth={3}
+                        />
+                        {itemsCount > 0 && <span></span>}
+                      </button>
+                    </DropdownTrigger>
+                    <CustomerMenuContent />
+                  </Dropdown>
+                )}
+                {process.env.COMMERCE_CART_ENABLED && (
+                  <button
+                    onClick={() => {
+                      setSidebarView('CART_VIEW')
+                      openSidebar()
+                    }}
+                    className="relative"
+                  >
+                    <Cart
+                      className="w-8 h-8"
+                      fill="transparent"
+                      stroke="black"
+                      strokeWidth={3}
+                    />
+                    {itemsCount > 0 && (
+                      <span className="w-3 h-3 rounded-full  bg-rose-600 absolute top-1 left-5 border-2 border-white" />
+                    )}
+                  </button>
+                )}
               </div>
             </>
           )}
