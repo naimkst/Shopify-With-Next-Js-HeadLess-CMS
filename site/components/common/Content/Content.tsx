@@ -35,7 +35,7 @@ const Content: React.FC<ContentProps> = ({
           dangerouslySetInnerHTML={{ __html: contentLeftAO.html }}
         ></div>
         <div className="text-lg">
-          <div className="flex items-center gap-10 mb-10">
+          <div className="flex items-center gap-8 mb-10">
             {contentRightAO.tabs.map(
               (tab: { title: string; content: string }) => (
                 <p

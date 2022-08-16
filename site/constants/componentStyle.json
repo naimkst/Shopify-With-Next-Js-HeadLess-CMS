@@ -217,7 +217,8 @@
           "backgroundColor": "bg-transparent",
           "fontSize": "text-lg",
           "outline": "outline-none",
-          "padding": "pr-8 pl-6 pt-3 pb-2"
+          "padding": "pr-8 pl-6 pt-3 pb-2",
+          "margin": "mr-2"
         },
         "ProductPrice": {
           "fontSize": "text-xl",
