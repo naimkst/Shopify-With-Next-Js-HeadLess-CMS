@@ -17,7 +17,8 @@ import { MenuSidebarView } from '@components/common/UserNav'
 import type { Page } from '@commerce/types/page'
 import type { Category } from '@commerce/types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
-
+import componentStyle from '../../../constants/componentStyle.json'
+import adjustments from '../../../constants/adjustments.json'
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
     <LoadingDots />
@@ -112,13 +113,24 @@ const Layout: React.FC<Props> = ({
     label: c.name,
     href: `/search/${c.slug}`,
   }))
+  const pageSetUpId = 'test2'
+  const cs = componentStyle.parkcellars[pageSetUpId]
+  const ao = adjustments.parkcellars[pageSetUpId].adjustment_object
 
   return (
     <CommerceProvider locale={locale}>
       <div className={cn(s.root)}>
-        <Navbar2 links={navBarlinks} />
+        <Navbar2
+          links={navBarlinks}
+          componentStyle={cs}
+          adjustmentObject={ao}
+        />
         <main className="fit">{children}</main>
-        <Footer2 pages={pageProps.pages} />
+        <Footer2
+          pages={pageProps.pages}
+          componentStyle={cs}
+          adjustmentObject={ao}
+        />
         <ModalUI />
         <CheckoutProvider>
           <SidebarUI links={navBarlinks} />

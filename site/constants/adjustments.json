@@ -208,6 +208,83 @@
           },
           "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
         },
+        "Navbar2": {
+          "Links": [
+            {
+              "href": "/search",
+              "name": "Shop",
+              "menuItems": [
+                { "href": "/search", "name": "Shop" },
+                { "href": "/", "name": "Recipes" },
+                { "href": "/", "name": "Logo" },
+
+                { "href": "/", "name": "Reviews" },
+
+                { "href": "/", "name": "Our Story" }
+              ]
+            },
+            { "href": "/", "name": "Recipes" },
+            {
+              "href": "/",
+              "name": "Logo",
+              "image": "https://cdn.shopify.com/s/files/1/0265/3709/9354/files/New_Explorer_Black_Logo_Straight_version-_1000_x_500_UPDATED_110x@2x.png?v=1634700562"
+            },
+            { "href": "/", "name": "Reviews" },
+            {
+              "href": "/",
+              "name": "Our Story",
+              "menuItems": [
+                { "href": "/search", "name": "Shop" },
+                { "href": "/", "name": "Recipes" },
+                { "href": "/", "name": "Logo" },
+
+                { "href": "/", "name": "Reviews" },
+
+                { "href": "/", "name": "Our Story" }
+              ]
+            }
+          ],
+          "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
+        },
+        "Footer2": {
+          "SocialMedia": [
+            { "name": "Instagram", "href": "https://instagram.com" },
+            { "name": "Facebook", "href": "https://facebook.com" },
+            { "name": "Youtube", "href": "https://youtube.com" },
+            { "name": "Twitter", "href": "https://twitter.com" }
+          ],
+          "Copyright": "Terms and Conditions Site by ROSA & HI-TECH",
+          "NewsletterTitle": "Join the explorer movement",
+          "NewsletterInput": {
+            "Placeholder": "Enter Your Email",
+            "Button": "Join Us"
+          },
+
+          "LinkColumns": [
+            {
+              "links": [
+                { "name": "Shop", "href": "/" },
+                { "name": "FAQ", "href": "/" },
+                { "name": "Reviews", "href": "/" },
+                { "name": "Our Team", "href": "/" },
+                { "name": "Contact Us", "href": "/" },
+                { "name": "Privacy Policy", "href": "/" }
+              ]
+            },
+            {
+              "links": [
+                { "name": "Sustainability", "href": "/" },
+                { "name": "Our Coffe", "href": "/" },
+                { "name": "Our Cause", "href": "/" },
+                { "name": "The Embassy", "href": "/" },
+                { "name": "Wholesale", "href": "/" },
+                { "name": "Refer a Friend", "href": "/" }
+              ]
+            }
+          ],
+          "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
+        },
+
         "ProductOverview2": {
           "Rating": {
             "rating": 4,

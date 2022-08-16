@@ -153,6 +153,44 @@
         "fontColor": "text-green-500",
         "Logo": {}
       },
+      "Navbar2": {
+        "Link": {},
+        "MenuItem": {}
+      },
+      "Footer2": {
+        "SocialMedia": {
+          "width": "w-6",
+          "height": "h-6",
+          "fontColor": "text-accent-2"
+        },
+        "Copyright": {
+          "fontFamily": "font-americus",
+          "fontSize": "text-xs"
+        },
+        "Links": {},
+        "NewsletterTitle": { "margin": "mb-4" },
+        "NewsletterInputContainer": {
+          "backgroundColor": "bg-white",
+          "padding": "p-1",
+          "display": "flex",
+          "alignItems": "items-center",
+          "rounded": "rounded-full"
+        },
+        "NewsletterInput": {
+          "backgroundColor": "bg-transparent",
+          "padding": "p-2",
+          "width": "w-72",
+          "outline": "outline-none",
+          "fontColor": "text-primary"
+        },
+        "NewsletterButton": {
+          "backgroundColor": "bg-black",
+          "padding": "p-2 px-6",
+
+          "rounded": "rounded-r-full"
+        },
+        "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
+      },
       "ProductOverview2": {
         "ProductTitle": {
           "fontSize": "text-[40px]",

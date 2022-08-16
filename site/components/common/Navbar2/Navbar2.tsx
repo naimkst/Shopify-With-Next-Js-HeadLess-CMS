@@ -27,11 +27,20 @@ interface Link {
 
 interface NavbarProps {
   links?: Link[]
+  componentStyle: any
+  adjustmentObject: any
 }
 const countItem = (count: number, item: LineItem) => count + item.quantity
 
-const Navbar: FC<NavbarProps> = ({ links }) => {
+const Navbar: FC<NavbarProps> = ({
+  links,
+  componentStyle,
+  adjustmentObject,
+}) => {
   const router = useRouter()
+  const navbarName = 'Navbar2'
+  const cs = componentStyle[navbarName]
+  const ao = adjustmentObject[navbarName]
 
   const [showSearchBar, setShowSearchBar] = useState(false)
 
@@ -48,15 +57,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
       )
     }
   }
-  const navItems = [
-    { href: '/search', name: 'Shop' },
-    { href: '/', name: 'Recipes' },
-    { href: '/', name: 'Logo' },
 
-    { href: '/', name: 'Reviews' },
-
-    { href: '/', name: 'Our Story' },
-  ]
   const { data } = useCart()
   const { data: isCustomerLoggedIn } = useCustomer()
 
@@ -117,25 +118,36 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           ) : (
             <>
               <nav className="flex items-center gap-8 font-bold">
-                {navItems.map((item) => (
-                  <>
-                    {item.name === 'Logo' ? (
-                      <Link key={item.name} href="/">
-                        <a aria-label="Logo" className={s.navLink}>
-                          <div className={s.navLinkContaier}>
-                            <img
-                              src="https://cdn.shopify.com/s/files/1/0265/3709/9354/files/New_Explorer_Black_Logo_Straight_version-_1000_x_500_UPDATED_110x@2x.png?v=1634700562"
-                              alt="Logo"
-                              className="w-28 h-16"
-                            />
-                          </div>
-                        </a>
-                      </Link>
-                    ) : (
-                      <NavbarItem key={item.name} item={item} />
-                    )}{' '}
-                  </>
-                ))}
+                {ao.Links.map(
+                  (item: {
+                    name: string
+                    image?: string
+                    href: string
+                    menuItems?: { name: string; href: string }[]
+                  }) => (
+                    <>
+                      {item.image ? (
+                        <Link key={item.name} href="/">
+                          <a aria-label={item.name} className={s.navLink}>
+                            <div className={s.navLinkContaier}>
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-28 h-16"
+                              />
+                            </div>
+                          </a>
+                        </Link>
+                      ) : (
+                        <NavbarItem
+                          key={item.name}
+                          item={item}
+                          componentStyle={cs}
+                        />
+                      )}{' '}
+                    </>
+                  )
+                )}
               </nav>
               <div className="flex gap-4 items-center w-16">
                 {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && (
