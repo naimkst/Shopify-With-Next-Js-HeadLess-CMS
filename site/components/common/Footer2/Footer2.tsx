@@ -66,8 +66,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </p>
         </div>
 
-        {footerLinkColumns.map((column) => (
-          <ul className="flex flex-col gap-2 text-accent-2 ">
+        {footerLinkColumns.map((column, idx) => (
+          <ul key={idx} className="flex flex-col gap-2 text-accent-2 ">
             {column.links.map((link) => (
               <li key={link.name}>
                 <Link href={link.href}>
