@@ -7,7 +7,7 @@ import LoginView from '@components/auth/LoginView'
 import { useUI } from '@components/ui/context'
 import { Navbar2, Footer2 } from '@components/common'
 import ShippingView from '@components/checkout/ShippingView'
-import CartSidebarView from '@components/cart/CartSidebarView'
+import CartSidebarView2 from '@components/cart/CartSidebarView2'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { Sidebar, Button, LoadingDots } from '@components/ui'
 import PaymentMethodView from '@components/checkout/PaymentMethodView'
@@ -83,7 +83,7 @@ const SidebarView: React.FC<{
 }> = ({ sidebarView, closeSidebar, links }) => {
   return (
     <Sidebar onClose={closeSidebar}>
-      {sidebarView === 'CART_VIEW' && <CartSidebarView />}
+      {sidebarView === 'CART_VIEW' && <CartSidebarView2 />}
       {sidebarView === 'SHIPPING_VIEW' && <ShippingView />}
       {sidebarView === 'PAYMENT_VIEW' && <PaymentMethodView />}
       {sidebarView === 'CHECKOUT_VIEW' && <CheckoutSidebarView />}

@@ -66,7 +66,7 @@ const Navbar: FC<NavbarProps> = ({
   const DropdownTrigger = isCustomerLoggedIn
     ? DropdownTriggerInst
     : React.Fragment
-  console.log(itemsCount)
+
   return (
     <NavbarRoot>
       <Container clean className="max-w-8xl px-12 ">
@@ -125,7 +125,7 @@ const Navbar: FC<NavbarProps> = ({
                     href: string
                     menuItems?: { name: string; href: string }[]
                   }) => (
-                    <>
+                    <div key={item.name}>
                       {item.image ? (
                         <Link key={item.name} href="/">
                           <a aria-label={item.name} className={s.navLink}>
@@ -145,7 +145,7 @@ const Navbar: FC<NavbarProps> = ({
                           componentStyle={cs}
                         />
                       )}{' '}
-                    </>
+                    </div>
                   )
                 )}
               </nav>
