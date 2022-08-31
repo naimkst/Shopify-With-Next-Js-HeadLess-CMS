@@ -3,6 +3,7 @@ import { Swatch } from '@components/product'
 import type { ProductOption } from '@commerce/types/product'
 import { SelectedOptions } from '../helpers'
 import { extractValues } from 'utility/extractValues'
+import Dropdown from '@components/common/Dropdown/Dropdown'
 
 interface ProductDropdownOptionsProps {
   options: ProductOption[]
@@ -30,11 +31,10 @@ const ProductDropdownOptions: React.FC<ProductDropdownOptionsProps> = ({
         <div className="pb-4" key={opt.displayName}>
           <h2 className={extractValues(optionLabelCS)}>{opt.displayName}</h2>
           <div className={extractValues(optionContainerCS)}>
-            <select
-              className={extractValues(optionValueCS)}
+            <Dropdown
+              styles={extractValues(optionValueCS)}
               name={opt.displayName}
-              id={opt.displayName}
-              onChange={(event) => {
+              onChange={(event: any) => {
                 setSelectedOptions((selectedOptions) => {
                   return {
                     ...selectedOptions,
@@ -43,15 +43,8 @@ const ProductDropdownOptions: React.FC<ProductDropdownOptionsProps> = ({
                   }
                 })
               }}
-            >
-              {opt.values.map((v, i: number) => {
-                return (
-                  <option key={v.label} value={v.label}>
-                    {v.label}
-                  </option>
-                )
-              })}
-            </select>
+              options={opt.values}
+            />
           </div>
         </div>
       ))}

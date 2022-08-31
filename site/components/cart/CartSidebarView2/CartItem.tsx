@@ -17,8 +17,15 @@ import Quantity from '@components/ui/Quantity'
 interface CartItemProps {
   item: LineItem
   currencyCode: string
+  componentStyle: any
+  adjustmentObject: any
 }
-const CartItem: FC<CartItemProps> = ({ item, currencyCode }) => {
+const CartItem: FC<CartItemProps> = ({
+  item,
+  currencyCode,
+  componentStyle,
+  adjustmentObject,
+}) => {
   const options =
     item.options &&
     item.options
@@ -29,13 +36,13 @@ const CartItem: FC<CartItemProps> = ({ item, currencyCode }) => {
 
   const { closeSidebarIfPresent } = useUI()
   const [removing, setRemoving] = useState(false)
-  const [quantity, setQuantity] = useState<number>(item.quantity)
+  const [quantity, setQuantity] = useState<number>(Number(item.quantity))
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
 
   const { price } = usePrice({
-    amount: item.variant.price * item.quantity,
-    baseAmount: item.variant.listPrice * item.quantity,
+    amount: item?.variant?.price || 0 * item?.quantity || 0,
+    baseAmount: item?.variant?.listPrice || 0 * item?.quantity || 0,
     currencyCode,
   })
 
@@ -52,11 +59,19 @@ const CartItem: FC<CartItemProps> = ({ item, currencyCode }) => {
     }
   }
 
+  console.log('cart items', item.node.merchandise.product.title)
   useEffect(() => {
     if (quantity) {
       quantityChangeHandler()
     }
   }, [quantity])
+
+  const productTitleName = 'ProductTitle'
+  const productTitleCS = componentStyle[productTitleName]
+  const productOptionsName = 'ProductOptions'
+  const productOptionsCS = componentStyle[productOptionsName]
+  const productPriceName = 'ProductPrice'
+  const productPriceCS = componentStyle[productPriceName]
   return (
     <li
       className={`flex my-4 gap-3 ${
@@ -66,8 +81,8 @@ const CartItem: FC<CartItemProps> = ({ item, currencyCode }) => {
       <Link href={`/product/${item.path}`}>
         <img
           onClick={() => closeSidebarIfPresent()}
-          src={item.variant.image?.url || ''}
-          alt={item.variant.image?.altText || 'Product Image'}
+          src={item?.node?.merchandise?.product?.featuredImage.url || ''}
+          alt={item?.node?.merchandise?.product?.title || 'Product Image'}
           className="h-24 w-24 cursor-pointer"
         />
       </Link>
@@ -77,40 +92,47 @@ const CartItem: FC<CartItemProps> = ({ item, currencyCode }) => {
             <Link href={`/product/${item.path}`}>
               <h2
                 onClick={() => closeSidebarIfPresent()}
-                className="font-camptonBold text-sm  max-h-10 overflow-hidden cursor-pointer"
-                title={item.name}
+                className={extractValues(productTitleCS)}
+                title={item?.node?.merchandise?.product?.title}
               >
-                {item.name}
+                {item?.node?.merchandise?.product?.title}
               </h2>
             </Link>
             <button onClick={handleRemove} type="button">
               <Trash className="flex-shrink-0 h-5 w-5 text-accent-3" />
             </button>
           </div>
-          {options && <p className="text-xs">{options}</p>}
+          {options && (
+            <p className={extractValues(productOptionsCS)}>{options}</p>
+          )}
         </div>
         <div className="flex items-center justify-between my-2">
           <div className="flex items-center border font-camptonBold text-xs border-accent-2 w-fit rounded-full">
             <button
               type="button"
-              onClick={() => setQuantity(quantity - 1)}
+              onClick={() => setQuantity(Number(item?.node?.quantity) - 1)}
               style={{ marginLeft: '-1px' }}
               disabled={quantity <= 1}
               className="border-r border-accent-2 py-1 px-2"
             >
               <Minus width={18} height={18} />
             </button>
-            <p className="py-1 px-2">{quantity}</p>
+            <p className="py-1 px-2">{item?.node.quantity}</p>
             <button
               type="button"
-              onClick={() => setQuantity(quantity + 1)}
+              onClick={() => setQuantity(Number(item?.node?.quantity) + 1)}
               disabled={quantity < 1}
               className="border-l border-accent-2 py-1 px-2"
             >
               <Plus width={18} height={18} />
             </button>
           </div>
-          <p className="text-xs text-emerald-500">{price}</p>
+          <p className={extractValues(productPriceCS)}>
+            {
+              item?.node?.merchandise?.product?.priceRange?.maxVariantPrice
+                .amount
+            }
+          </p>
         </div>
       </div>
     </li>

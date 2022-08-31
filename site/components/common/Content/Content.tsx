@@ -24,9 +24,7 @@ const Content: React.FC<ContentProps> = ({
   const [selectedContent, setSelectedContent] = useState(
     contentRightAO.tabs[0].content
   )
-  useEffect(() => {
-    console.log(document.querySelector('.grab')?.outerHTML)
-  }, [])
+
   return (
     <div className={cn(s.content)}>
       <div className="max-w-2xl mx-auto py-24 px-4 grid grid-cols-1 gap-y-16 gap-x-12 sm:px-6 sm:py-20 lg:max-w-7xl lg:px-8 lg:grid-cols-2 font-camptonSans">

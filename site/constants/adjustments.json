@@ -284,7 +284,13 @@
           ],
           "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
         },
-
+        "Cart2": {
+          "Title": "Your Cart",
+          "Notice": "Free U.S. Shipping 🚚 (Except Free Trial)",
+          "CheckoutButton": "Checkout",
+          "CloseButton": "Continue Shopping",
+          "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
+        },
         "ProductOverview2": {
           "Rating": {
             "rating": 4,

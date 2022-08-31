@@ -16,13 +16,9 @@ const getSpreeSdkMethodFromEndpointPath = <
   const reachedPath: string[] = []
   let node = <Record<string, unknown>>client
 
-  console.log(`Looking for ${path} in Spree Sdk.`)
-
   while (reachedPath.length < pathParts.length - 1) {
     const checkedPathPart = pathParts[reachedPath.length]
     const checkedNode = node[checkedPathPart]
-
-    console.log(`Checking part ${checkedPathPart}.`)
 
     if (typeof checkedNode !== 'object') {
       throw new SpreeSdkMethodFromEndpointPathError(

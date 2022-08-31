@@ -40,14 +40,6 @@ export default function getProductOperation({
     config?: Partial<SpreeApiConfig>
     preview?: boolean
   }): Promise<T['data']> {
-    console.log(
-      'getProduct called. Configuration: ',
-      'getProductVariables: ',
-      getProductVariables,
-      'config: ',
-      userConfig
-    )
-
     if (!getProductVariables?.slug) {
       throw new MissingSlugVariableError()
     }

@@ -18,6 +18,7 @@ export const checkoutCreate = async (fetch: any) => {
 
   const checkoutUrl = cart?.checkout_url
 
+  console.log('cookies')
   if (checkoutUrl) {
     Cookies.set(SWELL_CHECKOUT_URL_COOKIE, checkoutUrl)
   }

@@ -27,14 +27,18 @@ export const checkoutCreate = async (
   })
 
   const checkout = checkoutCreate?.checkout
+  console.log('cookies')
 
   if (checkout) {
+    console.log('cookies')
+
     const checkoutId = checkout?.id
     const options = {
       expires: SHOPIFY_COOKIE_EXPIRE,
     }
     Cookies.set(SHOPIFY_CHECKOUT_ID_COOKIE, checkoutId, options)
     if (checkout?.webUrl) {
+      console.log('cookies')
       Cookies.set(SHOPIFY_CHECKOUT_URL_COOKIE, checkout.webUrl, options)
     }
   }

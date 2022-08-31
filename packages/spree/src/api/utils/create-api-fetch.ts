@@ -33,16 +33,6 @@ const createApiFetch: CreateApiFetch = (_getConfig) => {
   })
 
   return async (url, queryData = {}, fetchOptions = {}) => {
-    console.log(
-      'apiFetch called. query = ',
-      'url = ',
-      url,
-      'queryData = ',
-      queryData,
-      'fetchOptions = ',
-      fetchOptions
-    )
-
     const { variables } = queryData
 
     if (!variables) {

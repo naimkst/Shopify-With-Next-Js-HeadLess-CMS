@@ -191,6 +191,70 @@
         },
         "iD": "322bfb9f-aa5f-11ec-9e69-e7a738d06736"
       },
+      "Cart2": {
+        "Title": {
+          "fontFamily": "font-americus",
+          "fontSize": "text-2xl"
+        },
+        "Notice": {
+          "textAlign": "text-center",
+          "backgroundColor": "bg-accent-2",
+          "padding": "py-2",
+          "fontSize": "text-sm"
+        },
+        "ProductOptionContainer": {
+          "border": "border-secondary border-2",
+          "width": "w-fit",
+          "rounded": "rounded-full",
+          "margin": "my-2",
+          "padding": "px-2",
+          "fontFamily": "font-campton"
+        },
+        "ProductOptionValue": {
+          "backgroundColor": "bg-transparent",
+          "fontSize": "text-lg",
+          "outline": "outline-none",
+          "padding": "pr-8 pl-6 pt-3 pb-2",
+          "margin": "mr-2"
+        },
+        "ProductTitle": {
+          "fontSize": "text-sm",
+          "fontFamily": "font-camptonBold",
+          "overflow": "overflow-hidden",
+          "cursor": "cursor-pointer",
+          "maxHeight": "max-h-10"
+        },
+        "ProductPrice": {
+          "fontSize": "text-xs",
+          "fontColor": "text-emerald-500"
+        },
+        "ProductOptions": {
+          "fontSize": "text-xs"
+        },
+        "Subtotal": {
+          "fontSize": "text-lg",
+          "textAlign": "text-center",
+          "fontFamily": "font-camptonBold",
+          "margin": "mb-2"
+        },
+        "CheckoutButton": {
+          "backgroundColor": "bg-secondary",
+          "fontColor": "text-secondary",
+          "padding": "py-3 px-4",
+          "rounded": "rounded-full",
+          "textAlign": "text-center",
+          "margin": "mb-2"
+        },
+        "CloseButton": {
+          "width": "w-full",
+          "backgroundColor": "bg-primary",
+          "fontColor": "text-primary",
+          "padding": "py-3 px-4",
+          "rounded": "rounded-full",
+          "textAlign": "text-center",
+          "border": "border-2 border-secondary"
+        }
+      },
       "ProductOverview2": {
         "ProductTitle": {
           "fontSize": "text-[40px]",

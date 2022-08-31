@@ -80,10 +80,23 @@ const SidebarView: React.FC<{
   sidebarView: string
   closeSidebar(): any
   links: LinkProps[]
-}> = ({ sidebarView, closeSidebar, links }) => {
+  componentStyle: any
+  adjustmentObject: any
+}> = ({
+  sidebarView,
+  closeSidebar,
+  links,
+  componentStyle,
+  adjustmentObject,
+}) => {
   return (
     <Sidebar onClose={closeSidebar}>
-      {sidebarView === 'CART_VIEW' && <CartSidebarView2 />}
+      {sidebarView === 'CART_VIEW' && (
+        <CartSidebarView2
+          componentStyle={componentStyle}
+          adjustmentObject={adjustmentObject}
+        />
+      )}
       {sidebarView === 'SHIPPING_VIEW' && <ShippingView />}
       {sidebarView === 'PAYMENT_VIEW' && <PaymentMethodView />}
       {sidebarView === 'CHECKOUT_VIEW' && <CheckoutSidebarView />}
@@ -92,13 +105,19 @@ const SidebarView: React.FC<{
   )
 }
 
-const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
+const SidebarUI: React.FC<{
+  links: LinkProps[]
+  componentStyle: any
+  adjustmentObject: any
+}> = ({ links, componentStyle, adjustmentObject }) => {
   const { displaySidebar, closeSidebar, sidebarView } = useUI()
   return displaySidebar ? (
     <SidebarView
       links={links}
       sidebarView={sidebarView}
       closeSidebar={closeSidebar}
+      componentStyle={componentStyle}
+      adjustmentObject={adjustmentObject}
     />
   ) : null
 }
@@ -133,7 +152,11 @@ const Layout: React.FC<Props> = ({
         />
         <ModalUI />
         <CheckoutProvider>
-          <SidebarUI links={navBarlinks} />
+          <SidebarUI
+            links={navBarlinks}
+            componentStyle={cs}
+            adjustmentObject={ao}
+          />
         </CheckoutProvider>
         <FeatureBar
           title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."

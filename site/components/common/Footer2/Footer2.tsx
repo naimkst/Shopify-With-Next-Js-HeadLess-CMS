@@ -68,7 +68,12 @@ const Footer: FC<Props> = ({
         <div className="flex flex-col justify-between w-36">
           <div className="flex items-center text-accent-1 gap-4">
             {ao.SocialMedia.map((media: { name: string; href: string }) => (
-              <a href={media.href} target="_blank">
+              <a
+                key={media.name}
+                href={media.href}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {media.name === 'Instagram' && (
                   <Instagram className={extractValues(socialMediaCS)} />
                 )}{' '}
@@ -92,7 +97,10 @@ const Footer: FC<Props> = ({
             column: { links: { name: string; href: string }[] },
             idx: number
           ) => (
-            <ul key={idx} className="flex flex-col gap-2 text-accent-2 ">
+            <ul
+              key={idx.toString()}
+              className="flex flex-col gap-2 text-accent-2 "
+            >
               {column.links.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>

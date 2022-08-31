@@ -10,6 +10,7 @@ export type SelectedOption = {
 }
 
 export type LineItem = {
+  node: any
   id: string
   variantId: string
   productId: string
@@ -89,6 +90,7 @@ export type CartItemBody = {
   variantId: string
   productId?: string
   quantity?: number
+  sellingPlanId?: any
 }
 
 /**

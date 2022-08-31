@@ -14,6 +14,16 @@ module.exports = withCommerceConfig({
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false
+      config.resolve.fallback.dns = false
+      config.resolve.fallback.net = false
+    }
+
+    return config
+  },
+
   rewrites() {
     return [
       (isBC || isShopify || isSwell || isVendure || isSaleor) && {
@@ -26,6 +36,10 @@ module.exports = withCommerceConfig({
         source: '/logout',
         destination: '/api/logout?redirect_to=/',
       },
+      {
+        source: '/api/:path*',
+        destination: 'https://rebuyengine.com/:path*',
+      },
       // For Vendure, rewrite the local api url to the remote (external) api url. This is required
       // to make the session cookies work.
       isVendure &&
@@ -35,6 +49,12 @@ module.exports = withCommerceConfig({
         },
     ].filter(Boolean)
   },
+  domains: [
+    'localhost',
+    '*',
+    'https://country-name-change.myshopify.com',
+    'https://country-name-change.myshopify.com/admin/api/2022-07/graphql.json',
+  ],
 })
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments

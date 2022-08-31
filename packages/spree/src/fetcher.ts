@@ -46,14 +46,6 @@ const fetcher: Fetcher<GraphQLFetcherResult<SpreeSdkResponse>> = async (
 ) => {
   const { url, method, variables, query } = requestOptions
 
-  console.log(
-    'Fetcher called. Configuration: ',
-    'url = ',
-    url,
-    'requestOptions = ',
-    requestOptions
-  )
-
   if (!variables) {
     throw new SpreeSdkMethodFromEndpointPathError(
       `Required FetcherVariables not provided.`
