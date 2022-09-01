@@ -64,68 +64,70 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   }, [product, selectedPaymentOption])
 
   const variant = getProductVariant(product, selectedOptions)
+  const sellingPlans =
+    productData?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans?.edges[0]
+      ?.node?.id
 
   const addToCart = async () => {
-    setLoading(true)
-    const getCartInfo = getLocalStorageData('cartInfo')
-    if (getCartInfo) {
-      const cartLine = await cartLinesAdd({
-        cartId: getCartInfo?.cartId,
-        lines: {
+    try {
+      setLoading(true)
+      const getCartInfo = getLocalStorageData('cartInfo')
+      if (getCartInfo) {
+        const cartLine = await cartLinesAdd({
+          cartId: getCartInfo?.cartId,
+          lines: {
+            quantity: selectedQuantity,
+            merchandiseId: productData?.data.variants.edges[1].node.id,
+            sellingPlanId:
+              selectedPaymentOption === 'subscription'
+                ? productData?.data?.sellingPlanGroups?.edges[0]?.node
+                    ?.sellingPlans?.edges[0]?.node?.id != undefined
+                  ? productData?.data?.sellingPlanGroups?.edges[0]?.node
+                      ?.sellingPlans?.edges[0]?.node?.id
+                  : null
+                : null,
+          },
+        })
+        allProductData(cartLine?.data)
+        setChecloutUpdateLink(cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl)
+        setCostInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.cost)
+        setCartInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.lines.edges)
+        setSidebarView('CART_VIEW')
+        openSidebar()
+        setLoading(false)
+      } else {
+        // if (selectedPaymentOption === 'subscription') {
+        const getProduct = await createCartWithChekOutUrl({
           quantity: selectedQuantity,
-          merchandiseId: productData?.data.variants.edges[1].node.id,
+          merchandiseId:
+            selectedPaymentOption === 'subscription'
+              ? productData?.data?.variants?.edges[1]?.node?.id != undefined
+                ? productData?.data?.variants?.edges[1]?.node?.id
+                : product.variants[0]?.id
+              : product.variants[0]?.id
+              ? product.variants[0]?.id
+              : productData?.data.variants.edges[1].node.id,
           sellingPlanId:
             selectedPaymentOption === 'subscription'
               ? productData?.data?.sellingPlanGroups?.edges[0]?.node
-                  ?.sellingPlans?.edges[0]?.node?.id != undefined
-                ? productData?.data?.sellingPlanGroups?.edges[0]?.node
-                    ?.sellingPlans?.edges[0]?.node?.id
-                : null
+                  ?.sellingPlans?.edges[0]?.node?.id
               : null,
-        },
-      })
-      allProductData(cartLine?.data)
-      setChecloutUpdateLink(cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl)
-      setCostInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.cost)
-      setCartInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.lines.edges)
-      console.log(
-        'response  Data',
-        cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl
-      )
+        })
+        setAuthInfoInLocalStorage({
+          cartId: getProduct.data.cartCreate.cart.id,
+          cehckoutUrl: getProduct.data.cartCreate.cart.checkoutUrl,
+        })
+        setChecloutUpdateLink(getProduct.data.cartCreate.cart.checkoutUrl)
+        allProductData(getProduct.data)
+        setCartInLocalStorage(getProduct?.data?.cartCreate?.cart?.lines.edges)
 
-      setSidebarView('CART_VIEW')
-      openSidebar()
+        setSidebarView('CART_VIEW')
+        openSidebar()
+        setLoading(false)
+        console.log(getProduct.data.cartCreate.cart)
+      }
+    } catch (error) {
       setLoading(false)
-    } else {
-      // if (selectedPaymentOption === 'subscription') {
-      const getProduct = await createCartWithChekOutUrl({
-        quantity: selectedQuantity,
-        merchandiseId:
-          selectedPaymentOption === 'subscription'
-            ? productData?.data?.variants?.edges[1]?.node?.id != undefined
-              ? productData?.data?.variants?.edges[1]?.node?.id
-              : product.variants[0]?.id
-            : product.variants[0]?.id
-            ? product.variants[0]?.id
-            : productData?.data.variants.edges[1].node.id,
-        sellingPlanId:
-          selectedPaymentOption === 'subscription'
-            ? productData?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans
-                ?.edges[0]?.node?.id
-            : null,
-      })
-      setAuthInfoInLocalStorage({
-        cartId: getProduct.data.cartCreate.cart.id,
-        cehckoutUrl: getProduct.data.cartCreate.cart.checkoutUrl,
-      })
-      setChecloutUpdateLink(getProduct.data.cartCreate.cart.checkoutUrl)
-      allProductData(getProduct.data)
-      setCartInLocalStorage(getProduct?.data?.cartCreate?.cart?.lines.edges)
-
-      setSidebarView('CART_VIEW')
-      openSidebar()
-      setLoading(false)
-      console.log(getProduct.data.cartCreate.cart)
     }
   }
 
@@ -190,9 +192,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
 
       <fieldset className="ml-12 ">
         <div
-          className={`px-2 mb-4 flex flex-col gap-4 ${
-            selectedPaymentOption === 'subscription' && 'bg-accent-2 py-4'
-          }`}
+          className={sellingPlans ? `px-2 mb-4 flex flex-col gap-4 ` : `hidden`}
         >
           <Radio
             onChange={radioChange}
@@ -219,6 +219,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
             </div>
           )} */}
         </div>
+
         <div className="px-2">
           <Radio
             onChange={radioChange}

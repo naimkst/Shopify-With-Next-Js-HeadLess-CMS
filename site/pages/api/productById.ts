@@ -4,6 +4,8 @@ export default async function handler(req: any, res: any) {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
   const shopifyAdminToken = process.env.NEXT_PUBLIC_SHOPIFY_ADMIN_ACCESS_TOKEN
   const { body } = req.body
+  console.log('bdddddd', body)
+
   const query = `query {
      productByHandle(handle: "${body}"){
     id

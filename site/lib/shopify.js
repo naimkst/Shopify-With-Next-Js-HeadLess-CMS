@@ -326,7 +326,7 @@ export async function createCartWithChekOutUrl(variables) {
                 value
               }
               checkoutUrl
-              lines(first: 4) {
+              lines(first: 250) {
                 edges {
                   node {
                     sellingPlanAllocation {
@@ -385,6 +385,7 @@ export async function createCartWithChekOutUrl(variables) {
                               amount
                             }
                           }
+                          handle
                           featuredImage {
                             url
                           }
@@ -500,7 +501,7 @@ export async function cartLinesAdd(variables) {
           currencyCode
         }
       }
-           lines(first: 10) {
+           lines(first: 250) {
         edges {
           node {
             id
@@ -553,6 +554,7 @@ export async function cartLinesAdd(variables) {
                       amount
                     }
                   }
+                  handle
                   featuredImage {
                     url
                   }
@@ -570,6 +572,128 @@ export async function cartLinesAdd(variables) {
       `,
       variables: {
         cartId: variables?.cartId,
+        quantity: variables.lines.quantity,
+        merchandiseId: variables.lines.merchandiseId,
+        sellingPlanId: variables.lines.sellingPlanId,
+      },
+    }),
+  }
+  const data = await fetch(URL, options).then((response) => {
+    return response.json()
+  })
+
+  return data
+}
+
+export async function cartLinesUpdate(variables) {
+  const URL = `https://${domain}/api/2022-07/graphql.json`
+  const options = {
+    endpoint: URL,
+    method: 'POST',
+    headers: {
+      'X-Shopify-Storefront-Access-Token': storefrontAccessToken,
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        mutation CartLineUpdate(
+          $cartId: ID!
+          $quantity: Int
+          $sellingPlanId: ID
+        ) {
+          cartLinesUpdate(
+            cartId: $cartId
+            lines: { id: "${variables?.lines.id}", quantity: $quantity, merchandiseId: "${variables?.lines.merchandiseId}", sellingPlanId: $sellingPlanId }
+          ) {
+              cart {
+      id
+      checkoutUrl
+      createdAt
+      updatedAt
+      totalQuantity
+      cost{
+        totalAmount{
+          amount
+          currencyCode
+        }
+        subtotalAmount{
+          amount
+          currencyCode
+        }
+      }
+           lines(first: 250) {
+        edges {
+          node {
+            id
+            quantity
+            merchandise {
+              ... on Node{
+                id
+                ... on CheckoutLineItem{
+                  id
+                  title
+                  unitPrice{
+                    amount
+                  }
+                  quantity
+                  variant{
+                    id
+                    unitPrice{
+                      amount
+                    }
+                  }
+                }
+                ... on Checkout{
+                  lineItems{
+                    edges{
+                      node{
+                        id
+                        title
+                        unitPrice{
+                          amount
+                        }
+                        variant{
+                          id
+                          title
+                          unitPrice{
+                            amount
+                          }
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              ... on ProductVariant {
+                product {
+                  title
+                  id
+                  priceRange {
+                    maxVariantPrice {
+                      amount
+                    }
+                  }
+                  handle
+                  featuredImage {
+                    url
+                  }
+                }
+                id
+                title
+              }
+            }
+          }
+        }
+      }
+    }	
+          }
+        }
+      `,
+      variables: {
+        cartId: variables?.cartId,
+        id: variables.lines.id,
         quantity: variables.lines.quantity,
         merchandiseId: variables.lines.merchandiseId,
         sellingPlanId: variables.lines.sellingPlanId,
@@ -666,7 +790,6 @@ export async function cartLinesAddBackup(variables) {
 }
 
 export async function cartLinesRemove(variables) {
-  console.log('========', variables)
   const URL = `https://${domain}/api/2022-07/graphql.json`
   const options = {
     endpoint: URL,

@@ -26,7 +26,6 @@ const CartSidebarView: FC<{
   const costData = getLocalStorageData('costData')
   const checkOutLink = getLocalStorageData('checkOutLink')
 
-  console.log(checkOutLink)
   const { price: subTotal } = usePrice(
     data && {
       amount: Number(costData?.totalAmount?.amount),
@@ -91,7 +90,6 @@ const CartSidebarView: FC<{
 
   const productTitleName = 'ProductTitle'
   const productTitleCS = cs[productTitleName]
-  console.log(productRecommendation)
   return (
     <div className={'h-full font-campton flex flex-col'}>
       <div className="flex-shrink-0 sticky z-20 top-0 w-full right-0 left-0 ">
@@ -103,7 +101,7 @@ const CartSidebarView: FC<{
         <p className={extractValues(noticeCS)}>{ao.Notice}</p>
       </div>
 
-      {cartData.length == 0 ? (
+      {cartData?.length == 0 ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
             <Bag className="absolute" />
@@ -140,7 +138,7 @@ const CartSidebarView: FC<{
             <div className="px-4 sm:px-6 ">
               <ul className="overflow-y-auto ">
                 {cartData?.map((item: any, index: number) => (
-                  <div key={item.id}>
+                  <div key={index}>
                     <CartItem
                       key={index}
                       item={item}

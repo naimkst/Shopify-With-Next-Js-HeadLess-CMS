@@ -13,8 +13,14 @@ import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
-import { cartLinesRemove } from '@lib/shopify'
-import { getLocalStorageData, setCartInLocalStorage } from 'utility/helpers'
+import { cartLinesAdd, cartLinesRemove, cartLinesUpdate } from '@lib/shopify'
+import {
+  getLocalStorageData,
+  setCartInLocalStorage,
+  setChecloutUpdateLink,
+  setCostInLocalStorage,
+} from 'utility/helpers'
+import axios from 'axios'
 
 interface CartItemProps {
   item: LineItem
@@ -53,6 +59,95 @@ const CartItem: FC<CartItemProps> = ({
 
   const quantityChangeHandler = async () => {
     await updateItem({ quantity })
+  }
+
+  const itemAdd = async () => {
+    try {
+      setRemoving(true)
+      const producthandle = item?.node?.merchandise.product?.handle
+      const productGetById: any = await axios.post('/api/productById', {
+        body: producthandle,
+      })
+      const planId =
+        productGetById?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans
+          ?.edges[0]?.node?.id
+
+      const getCartInfo = getLocalStorageData('cartInfo')
+
+      const cartLine = await cartLinesAdd({
+        cartId: getCartInfo?.cartId,
+        lines: {
+          quantity: 1,
+          merchandiseId: item?.node?.merchandise?.id,
+          sellingPlanId: planId ? planId : null,
+        },
+      })
+      // allProductData(cartLine?.data)
+      setChecloutUpdateLink(cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl)
+      setCostInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.cost)
+      setCartInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.lines.edges)
+      setSidebarView('CART_VIEW')
+      openSidebar()
+      setRemoving(false)
+    } catch (error) {
+      setRemoving(false)
+    }
+  }
+
+  const itemUpdate = async () => {
+    try {
+      setRemoving(true)
+      const producthandle = item?.node?.merchandise.product?.handle
+      const productGetById: any = await axios.post('/api/productById', {
+        body: producthandle,
+      })
+      const planId =
+        productGetById?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans
+          ?.edges[0]?.node?.id
+
+      const getCartInfo = getLocalStorageData('cartInfo')
+
+      if (item?.node.quantity != 1) {
+        const cartLine = await cartLinesUpdate({
+          cartId: getCartInfo?.cartId,
+          lines: {
+            id: item?.node.id,
+            quantity: Number(item?.node.quantity) - 1,
+            merchandiseId: item?.node?.merchandise?.id,
+            sellingPlanId: planId ? planId : null,
+          },
+        })
+        setChecloutUpdateLink(
+          cartLine?.data?.cartLinesUpdate?.cart?.checkoutUrl
+        )
+        setCostInLocalStorage(cartLine?.data?.cartLinesUpdate?.cart?.cost)
+        setCartInLocalStorage(
+          cartLine?.data?.cartLinesUpdate?.cart?.lines.edges
+        )
+        setSidebarView('CART_VIEW')
+        openSidebar()
+        setRemoving(false)
+      } else {
+        setRemoving(true)
+        try {
+          const variables = {
+            cartId: allProductData?.cartLinesAdd?.cart?.id,
+            lineIds: item?.node?.id,
+          }
+          const removRes = await cartLinesRemove(variables)
+          setCartInLocalStorage(
+            removRes?.data?.cartLinesRemove?.cart?.lines.edges
+          )
+          setSidebarView('CART_VIEW')
+          openSidebar()
+          setRemoving(false)
+        } catch (error) {
+          setRemoving(false)
+        }
+      }
+    } catch (error) {
+      setRemoving(false)
+    }
   }
 
   const handleRemove = async () => {
@@ -122,7 +217,7 @@ const CartItem: FC<CartItemProps> = ({
           <div className="flex items-center border font-camptonBold text-xs border-accent-2 w-fit rounded-full">
             <button
               type="button"
-              onClick={() => setQuantity(Number(item?.node?.quantity) - 1)}
+              onClick={itemUpdate}
               style={{ marginLeft: '-1px' }}
               disabled={quantity <= 1}
               className="border-r border-accent-2 py-1 px-2"
@@ -132,7 +227,7 @@ const CartItem: FC<CartItemProps> = ({
             <p className="py-1 px-2">{item?.node.quantity}</p>
             <button
               type="button"
-              onClick={() => setQuantity(Number(item?.node?.quantity) + 1)}
+              onClick={itemAdd}
               disabled={quantity < 1}
               className="border-l border-accent-2 py-1 px-2"
             >

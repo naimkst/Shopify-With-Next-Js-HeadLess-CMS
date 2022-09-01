@@ -186,7 +186,7 @@ const Navbar: FC<NavbarProps> = ({
                       stroke="black"
                       strokeWidth={3}
                     />
-                    {cartData != 0 && (
+                    {cartData && (
                       <span className="w-3 h-3 rounded-full  bg-rose-600 absolute top-1 left-5 border-2 border-white" />
                     )}
                   </button>
