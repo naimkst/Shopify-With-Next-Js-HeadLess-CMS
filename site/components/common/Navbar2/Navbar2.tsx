@@ -19,6 +19,7 @@ import {
 import CustomerMenuContent from '../UserNav/CustomerMenuContent'
 import useCustomer from '@framework/customer/use-customer'
 import React from 'react'
+import { getLocalStorageData } from 'utility/helpers'
 
 interface Link {
   href: string
@@ -41,6 +42,7 @@ const Navbar: FC<NavbarProps> = ({
   const navbarName = 'Navbar2'
   const cs = componentStyle[navbarName]
   const ao = adjustmentObject[navbarName]
+  const cartData = getLocalStorageData('cartData')
 
   const [showSearchBar, setShowSearchBar] = useState(false)
 
@@ -184,7 +186,7 @@ const Navbar: FC<NavbarProps> = ({
                       stroke="black"
                       strokeWidth={3}
                     />
-                    {itemsCount > 0 && (
+                    {cartData != 0 && (
                       <span className="w-3 h-3 rounded-full  bg-rose-600 absolute top-1 left-5 border-2 border-white" />
                     )}
                   </button>

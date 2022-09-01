@@ -13,6 +13,7 @@ import Lock from '@components/icons/Lock'
 import { extractValues } from 'utility/extractValues'
 import RecommandationItem from './RecommandationItem'
 import { getLocalStorageData } from 'utility/helpers'
+import { cartLinesRemove } from '@lib/shopify'
 
 const CartSidebarView: FC<{
   componentStyle: any
@@ -50,25 +51,23 @@ const CartSidebarView: FC<{
   const error = null
   const success = null
 
-  console.log(cartData)
   useEffect(() => {
-    ;(async () => {
-      const cartItemIds = data?.lineItems
-        .map((item) => item.productId)
-        .join(', ')
-
-      if (process.env.NEXT_PUBLIC_REBUY_API_KEY) {
-        const requestParameters = new URLSearchParams({
-          key: process.env.NEXT_PUBLIC_REBUY_API_KEY,
-          query: '',
-        })
-        const fetchRequest = await fetch(
-          `https://rebuyengine.com/api/v1/products/search?${requestParameters}`
-        )
-        const response = await fetchRequest.json()
-        setProductRecommendation(response.data)
-      }
-    })()
+    // ;(async () => {
+    //   const cartItemIds = data?.lineItems
+    //     .map((item) => item.productId)
+    //     .join(', ')
+    //   if (process.env.NEXT_PUBLIC_REBUY_API_KEY) {
+    //     const requestParameters = new URLSearchParams({
+    //       key: process.env.NEXT_PUBLIC_REBUY_API_KEY,
+    //       query: '',
+    //     })
+    //     const fetchRequest = await fetch(
+    //       `https://rebuyengine.com/api/v1/products/search?${requestParameters}`
+    //     )
+    //     const response = await fetchRequest.json()
+    //     setProductRecommendation(response.data)
+    //   }
+    // })()
   }, [])
 
   const cartName = 'Cart2'
@@ -104,7 +103,7 @@ const CartSidebarView: FC<{
         <p className={extractValues(noticeCS)}>{ao.Notice}</p>
       </div>
 
-      {false ? (
+      {cartData.length == 0 ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
           <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
             <Bag className="absolute" />
@@ -155,9 +154,9 @@ const CartSidebarView: FC<{
               </ul>
             </div>
             <div className="bg-accent-2 flex flex-col pt-12 pb-6">
-              <h1 className="font-americus text-center mb-6">
+              {/* <h1 className="font-americus text-center mb-6">
                 PAIRS WELL WITH
-              </h1>
+              </h1> */}
               <ul className="px-10 flex flex-col gap-6">
                 {/* {productRecommendation.map((item: any) => (
                   <RecommandationItem
@@ -172,9 +171,9 @@ const CartSidebarView: FC<{
           </div>
 
           <div className="flex-shrink-0 px-6 py-6 sm:px-6 sticky z-20 bottom-0 w-full right-0 left-0 bg-accent-0 border-t mt-auto">
-            <h1 className={extractValues(subtotalCS)}>
+            {/* <h1 className={extractValues(subtotalCS)}>
               Subtotal ({itemsTotal} items) {subTotal}
-            </h1>
+            </h1> */}
             <a href={checkOutLink}>
               <button
                 className={`${extractValues(

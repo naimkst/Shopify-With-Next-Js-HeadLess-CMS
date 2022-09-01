@@ -23,6 +23,7 @@ import {
 } from '@lib/shopify'
 import axios from 'axios'
 import {
+  allProductData,
   getLocalStorageData,
   setAuthInfoInLocalStorage,
   setCartInLocalStorage,
@@ -83,6 +84,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
               : null,
         },
       })
+      allProductData(cartLine?.data)
       setChecloutUpdateLink(cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl)
       setCostInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.cost)
       setCartInLocalStorage(cartLine?.data?.cartLinesAdd?.cart?.lines.edges)
@@ -91,7 +93,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
         cartLine?.data?.cartLinesAdd?.cart?.checkoutUrl
       )
 
-      // setSidebarView('CART_VIEW')
+      setSidebarView('CART_VIEW')
       openSidebar()
       setLoading(false)
     } else {
@@ -117,24 +119,14 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
         cehckoutUrl: getProduct.data.cartCreate.cart.checkoutUrl,
       })
       setChecloutUpdateLink(getProduct.data.cartCreate.cart.checkoutUrl)
+      allProductData(getProduct.data)
+      setCartInLocalStorage(getProduct?.data?.cartCreate?.cart?.lines.edges)
 
       setSidebarView('CART_VIEW')
       openSidebar()
       setLoading(false)
       console.log(getProduct.data.cartCreate.cart)
     }
-    // else {
-    //   const getProduct = await createCartWithChekOutUrl({
-    //     quantity: selectedQuantity,
-    //     merchandiseId: product.variants[0]?.id,
-    //   })
-    //   setAuthInfoInLocalStorage({
-    //     cartId: getProduct.data.cartCreate.cart.id,
-    //     cehckoutUrl: getProduct.data.cartCreate.cart.checkoutUrl,
-    //   })
-    //   console.log(getProduct.data.cartCreate)
-    // }
-    // }
   }
 
   const titleName = 'ProductTitle'

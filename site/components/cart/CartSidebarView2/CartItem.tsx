@@ -13,6 +13,8 @@ import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
+import { cartLinesRemove } from '@lib/shopify'
+import { getLocalStorageData, setCartInLocalStorage } from 'utility/helpers'
 
 interface CartItemProps {
   item: LineItem
@@ -39,6 +41,9 @@ const CartItem: FC<CartItemProps> = ({
   const [quantity, setQuantity] = useState<number>(Number(item.quantity))
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
+  const allProductData = getLocalStorageData('allProductData')
+  const cartData = getLocalStorageData('cartData')
+  const { openSidebar, setSidebarView } = useUI()
 
   const { price } = usePrice({
     amount: item?.variant?.price || 0 * item?.quantity || 0,
@@ -53,18 +58,25 @@ const CartItem: FC<CartItemProps> = ({
   const handleRemove = async () => {
     setRemoving(true)
     try {
-      await removeItem(item)
+      const variables = {
+        cartId: allProductData?.cartLinesAdd?.cart?.id,
+        lineIds: item?.node?.id,
+      }
+      const removRes = await cartLinesRemove(variables)
+      setCartInLocalStorage(removRes?.data?.cartLinesRemove?.cart?.lines.edges)
+      setSidebarView('CART_VIEW')
+      openSidebar()
+      setRemoving(false)
     } catch (error) {
       setRemoving(false)
     }
   }
 
-  console.log('cart items', item.node.merchandise.product.title)
   useEffect(() => {
     if (quantity) {
       quantityChangeHandler()
     }
-  }, [quantity])
+  }, [quantity, cartData])
 
   const productTitleName = 'ProductTitle'
   const productTitleCS = componentStyle[productTitleName]
@@ -139,3 +151,10 @@ const CartItem: FC<CartItemProps> = ({
   )
 }
 export default CartItem
+function setSidebarView(arg0: string) {
+  throw new Error('Function not implemented.')
+}
+
+function closeSidebar() {
+  throw new Error('Function not implemented.')
+}

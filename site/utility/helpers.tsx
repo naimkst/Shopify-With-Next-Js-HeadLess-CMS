@@ -23,6 +23,10 @@ export const setChecloutUpdateLink = (checkOutLink?: any) => {
   localStorage.setItem('checkOutLink', JSON.stringify(checkOutLink))
 }
 
+export const allProductData = (allProductData?: any) => {
+  localStorage.setItem('allProductData', JSON.stringify(allProductData))
+}
+
 export const getLocalStorageData = (key: string) => {
   let data: any =
     typeof window !== 'undefined' ? localStorage.getItem(key) : null
