@@ -71,6 +71,14 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
   const addToCart = async () => {
     try {
       setLoading(true)
+      const sellingPlan =
+        selectedPaymentOption === 'subscription'
+          ? productData?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans
+              ?.edges[0]?.node?.id != undefined
+            ? productData?.data?.sellingPlanGroups?.edges[0]?.node?.sellingPlans
+                ?.edges[0]?.node?.id
+            : null
+          : null
       const getCartInfo = getLocalStorageData('cartInfo')
       if (getCartInfo) {
         const cartLine = await cartLinesAdd({
@@ -78,14 +86,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({
           lines: {
             quantity: selectedQuantity,
             merchandiseId: productData?.data.variants.edges[1].node.id,
-            sellingPlanId:
-              selectedPaymentOption === 'subscription'
-                ? productData?.data?.sellingPlanGroups?.edges[0]?.node
-                    ?.sellingPlans?.edges[0]?.node?.id != undefined
-                  ? productData?.data?.sellingPlanGroups?.edges[0]?.node
-                      ?.sellingPlans?.edges[0]?.node?.id
-                  : null
-                : null,
+            sellingPlanId: sellingPlan,
           },
         })
         allProductData(cartLine?.data)

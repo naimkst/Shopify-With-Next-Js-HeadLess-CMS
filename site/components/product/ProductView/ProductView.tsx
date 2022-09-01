@@ -58,7 +58,6 @@ const ProductView: FC<ProductViewProps> = ({
           }
         )
 
-        console.log(fetchRequest, 'dddaaaaa', 'rreeeeessss')
         // console.log(response, 'RESPONSE Subscribe', getResponse)
       }
 
@@ -78,11 +77,10 @@ const ProductView: FC<ProductViewProps> = ({
         url: `https://rebuyengine.com/api/v1/recharge/subscribe?${requestParameters}`,
         headers: { Accept: 'application/json' },
       }
-
       axios
         .request(options)
         .then(function (response) {
-          console.log(response)
+          // console.log(response)
         })
         .catch(function (error) {
           console.error(error)
